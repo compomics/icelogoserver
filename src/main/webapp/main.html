@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title></title>
+
+    <!-- WICK STEP 1: INSERT CSS -->
+    <link rel="stylesheet" type="text/css" href="wick.css" />
+    <script type="text/javascript" src="logo.js"></script>
+</head>
+
+<body>
+<script type="text/javascript" language="JavaScript">
+function checkForm() {
+answer = true;
+if (siw && siw.selectingSomething)
+	answer = false;
+return answer;
+}//
+</script>
+<center>
+
+<img src="images/header.png" alt="header"/>
+<hr width="800px">
+<div >
+    <a href="main.html" border="0"><img src="images/mainSelect.png" onmouseout="setImage('mainButton','images/mainSelect.png');" onmouseover="setImage('mainButton','images/mainHover.png');"id="mainButton" alt="mainbutton"></a>
+    <a href="manual.pdf" border="0"><img id="manualButton" onmouseout="setImage('manualButton','images/manual.png');" onmouseover="setImage('manualButton','images/manualHover.png');" src="images/manual.png" alt="manualButton"></a>
+    <a href="logo.html" border="0"><img id="generateButton" onmouseout="setImage('generateButton','images/create.png');" onmouseover="setImage('generateButton','images/createHover.png');" src="images/create.png" alt="generatebutton"></a>
+    <a href="soap.html" border="0"><img id="soapButton" onmouseout="setImage('soapButton','images/soap.png');" onmouseover="setImage('soapButton','images/soapHover.png');" src="images/soap.png" alt="soapButton"></a>
+</div>
+    <div style="width: 800;" align="left">
+        <div style="color:#0066CC; font-size:30px;">Introduction</div>
+        <br>
+        Large sequence-based datasets are often scanned for conserved sequence patterns to extract useful biological information<sup>1</sup>.
+        Sequence logos<sup>2</sup> were the first to visualize conserved patterns in oligonucleotide and protein sequences and rely on Shannon’s
+        information theory to calculate the conservation level amongst all positions in a multiple sequence alignment. A sequence logo is a
+        histogram-like presentation in which bars are vertical stacks of symbols, the stack height reflects the level of conservation and the
+        height of individual symbols is a measure for their frequency at a given position. In a statistically sound manner however, no tool can
+        compare an experimental peptide or protein sequence set to the background of species-specific natural occurrences of amino acids, to a
+        position-specific background set, or to a background set that is influenced by the experimental protocol. In addition, underrepresented
+        elements – non-tolerated amino acids or nucleotides – are generally not or not statistically well presented.
+        <br>
+        We here introduce iceLogo<sup>3</sup> which takes the analysis and visualisation of consensus patterns in aligned peptide sequences
+        to a new level. IceLogo is a free, open source Java application that can be downloaded at
+        <a href="http://icelogo.googlecode.com/">http://icelogo.googlecode.com/</a>. IceLogo can also be used via this web application and a SOAP web server.
+        Instead of relying on information theory, iceLogo builds
+        on probability theory. This theory and the iceLogo algorithm is explained in the manual.
+        An appropriate reference set must be defined by he user, allowing it to be tailored to ideally
+        approximate the expected background distribution. The experimental sequence set is generally a multiple sequence alignment of peptides
+        that are expected to share sequence features. These two set will be used in a probability analysis and the result is shown in complementary illustrations 
+        like heat maps, amino acid parameter graphs and so-called iceLogos, which were all developed to aid analysis, visualisation and
+        understanding of consensus sequences in an intuitive way.
+        <br>
+        <br>
+        1.	<a href="http://www.ncbi.nlm.nih.gov/pubmed/18003654">Hulo, N. et al. Nucleic Acids Res 36, D245-249 (2008).</a>
+        <br>
+        2.	<a href="http://www.ncbi.nlm.nih.gov/pubmed/2172928">Schneider, T. D. & R. M. Stephens Nucleic Acids Res 18, 6097-6100 (1990).</a>
+        <br>
+        3.	<a href="http://www.ncbi.nlm.nih.gov/pubmed/19876014">Colaert, N. et al. Nature Methods 6, 786-787 (2009)</a> 
+        <br>
+        <br>
+        <div style="color:#0066CC; font-size:30px;">Reference</div>
+        <br>
+        If you use the iceLogo web application or the iceLogo stand alone version do not forget to reference the iceLogo publication.
+        <br>
+        <a href="http://www.ncbi.nlm.nih.gov/pubmed/19876014">Colaert, N. et al. Nature Methods 6, 786-787 (2009)</a>
+        <br>
+        <br>
+        <div style="color:#0066CC; font-size:30px;">Acquiring icelogo</div>
+        <br>
+        A stand alone java application that can generate iceLogos can be found <a href="http://code.google.com/p/icelogo/">here</a>.
+        The iceLogo server and SOAP client examples can be found <a href="http://code.google.com/p/icelogoserver/">here</a>.
+        <br>
+    </div>
+
+
+<hr width="800px">
+    <a href="http://code.google.com/p/icelogo/">iceLogo stand alone version</a> <a href="http://code.google.com/p/icelogoserver/">iceLogo server version</a> <a href="http://www.computationalproteomics.com">Computational proteomics</a> <a href="http://www.vib.be">VIB</a> <a href="http://www.ugent.be">University Ghent</a>
+
+</center>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9963568-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

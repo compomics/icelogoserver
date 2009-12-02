@@ -1,0 +1,181 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from IceLogoService WSDL service -->
+
+  <service name="icelogo" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="urn:IceLogoFetcher"/>
+      <parameter name="wsdlServiceElement" value="IceLogoService"/>
+      <parameter name="schemaQualified" value="urn:IceLogoFetcher"/>
+      <parameter name="wsdlServicePort" value="icelogo"/>
+      <parameter name="className" value="main.java.com.computationalproteomics.icelogoserver.soap.server.IcelogoSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="IceLogo"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="getAvailableAaParameters" qname="operNS:getAvailableAaParameters" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getAvailableAaParametersReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getAvailableSubstitutionMatrices" qname="operNS:getAvailableSubstitutionMatrices" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getAvailableSubstitutionMatricesReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="testService" qname="operNS:testService" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:testServiceReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lTestString" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSamplingIceLogo" qname="operNS:getSamplingIceLogo" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getSamplingIceLogoReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lExperimentalSet2" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lScoringType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lYaxis" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingIterations" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAnchorPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingDirection" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSamplingHeatMap" qname="operNS:getSamplingHeatMap" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getSamplingHeatMapReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lExperimentalSet2" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingIterations" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAnchorPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingDirection" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSamplingAaParameterGraph" qname="operNS:getSamplingAaParameterGraph" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getSamplingAaParameterGraphReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lExperimentalSet2" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAaMatrixTitle" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingIterations" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAnchorPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingDirection" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSamplingConservationLine" qname="operNS:getSamplingConservationLine" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getSamplingConservationLineReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lExperimentalSet2" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSubstitutionMatrixTitle" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingIterations" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAnchorPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSamplingDirection" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticIceLogo" qname="operNS:getStaticIceLogo" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticIceLogoReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lScoringType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lYaxis" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticHeatMap" qname="operNS:getStaticHeatMap" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticHeatMapReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticSequenceLogo" qname="operNS:getStaticSequenceLogo" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticSequenceLogoReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getFilledLogo" qname="operNS:getFilledLogo" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getFilledLogoReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticAaParameterGraph" qname="operNS:getStaticAaParameterGraph" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticAaParameterGraphReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAaMatrixTitle" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticConservationLine" qname="operNS:getStaticConservationLine" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticConservationLineReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSpecies" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSubstitutionMatrixTitle" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticReferenceSetIceLogo" qname="operNS:getStaticReferenceSetIceLogo" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticReferenceSetIceLogoReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lReferenceSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lScoringType" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lYaxis" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticReferenceSetHeatMap" qname="operNS:getStaticReferenceSetHeatMap" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticReferenceSetHeatMapReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lReferenceSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticReferenceSetSequenceLogo" qname="operNS:getStaticReferenceSetSequenceLogo" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticReferenceSetSequenceLogoReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lReferenceSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticReferenceSetAaParameterGraph" qname="operNS:getStaticReferenceSetAaParameterGraph" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticReferenceSetAaParameterGraphReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lReferenceSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lAaMatrixTitle" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getStaticReferenceSetConservationLine" qname="operNS:getStaticReferenceSetConservationLine" xmlns:operNS="urn:IceLogoFetcher" returnQName="retNS:getStaticReferenceSetConservationLineReturn" xmlns:retNS="urn:IceLogoFetcher" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:lExperimentalSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lReferenceSet" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lSubstitutionMatrixTitle" xmlns:pns="urn:IceLogoFetcher" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lStartPosition" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lPvalue" xmlns:pns="urn:IceLogoFetcher" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lHeight" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lWidth" xmlns:pns="urn:IceLogoFetcher" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getStaticReferenceSetIceLogo getSamplingHeatMap getStaticReferenceSetConservationLine getStaticSequenceLogo getStaticReferenceSetSequenceLogo getAvailableSubstitutionMatrices getSamplingConservationLine getStaticAaParameterGraph testService getFilledLogo getStaticIceLogo getStaticHeatMap getStaticReferenceSetHeatMap getAvailableAaParameters getStaticConservationLine getSamplingIceLogo getStaticReferenceSetAaParameterGraph getSamplingAaParameterGraph"/>
+
+  </service>
+</deployment>
