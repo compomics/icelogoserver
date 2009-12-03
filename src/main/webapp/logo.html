@@ -399,6 +399,34 @@ document.getElementById("species").setAttribute("dataSrc","species");
 document.getElementById("substitutionMatrix").setAttribute("dataSrc","substitution");
 document.getElementById("aaMatrix").setAttribute("dataSrc","aa");
 </script>
+
+<script type="text/javascript">
+    var lUrl = document.location.toString();
+    var lExampleIndex = lUrl.indexOf('example=');
+    if(lExampleIndex != -1){
+        var lExampleNumber = lUrl.substr(lExampleIndex + 8, lExampleIndex + 9);
+        alert(lExampleNumber);
+        if(lExampleNumber == 1){
+            loadExample1();
+        }
+        if(lExampleNumber == 2){
+            loadExample2();
+        }
+        if(lExampleNumber == 3){
+            loadExample3();
+        }
+        if(lExampleNumber == 4){
+            loadExample4();
+        }
+        if(lExampleNumber == 5){
+            loadExample5();
+        }
+        if(lExampleNumber == 6){
+            loadExample6();
+        }
+    }
+</script>
+
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

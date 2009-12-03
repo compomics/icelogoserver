@@ -10,7 +10,8 @@
 \usepackage[pdftex]{graphicx}
 %\usepackage[small,bf,hang]{caption2}    % Om de captions wat te verbeteren
 \usepackage{xspace}                     % Magische spaties na een commando
-\usepackage[latin1]{inputenc}           % Om niet ascii karakters rechtstreeks te kunnen typen
+\usepackage[latin1]{inputenc}           % Om niet ascii karakters rechtstreeks te
+\usepackage{hyperref}
 \usepackage{float}                      % Om nieuwe float environments aan te maken. Ook optie H!
 %\usepackage{flafter}                   % Opdat floats niet zouden voorsteken
 \usepackage{listings}                   % Voor het weergeven van letterlijke text en codelistings
@@ -153,6 +154,17 @@ Department of Medical Protein Research, VIB, B-9000 Ghent, Belgium
 
 \mainmatter
 
+\chapter*{Introduction}
+Improved visualization of protein consensus sequences by iceLogo
+\paragraph{}Large sequence-based datasets are often scanned for conserved sequence patterns to extract useful biological information (1). Sequence logos (2) were the first to visualize conserved patterns in oligonucleotide and protein sequences and rely on Shannon’s information theory to calculate the conservation level amongst all positions in a multiple sequence alignment. A sequence logo is a histogram-like presentation in which bars are vertical stacks of symbols, the stack height reflects the level of conservation and the height of individual symbols is a measure for their frequency at a given position. In a statistically sound manner however, no tool can compare an experimental peptide or protein sequence set to the background of species-specific natural occurrences of amino acids, to a position-specific background set, or to a background set that is influenced by the experimental protocol. In addition, underrepresented elements – non-tolerated amino acids or nucleotides – are generally not or not statistically well presented. 
+\paragraph{}We recently introduce iceLogo (3) which takes the analysis and visualisation of consensus patterns in aligned peptide sequences to a new level. Instead of relying on information theory, iceLogo builds on probability theory. This theory takes the experimental set normally used to generate a sequence logo and compares it with a reference set. This reference set can be configurated by the user allowing it to be tailored to ideally approximate the expected background distribution. The experimental sequence set is generally a multiple sequence alignment of peptides that are expected to share sequence features. These two set will be used in a probability analysis and the result is shown in complementary illustrations like heat maps, amino acid parameter graphs and so-called iceLogos, which were all developed to aid analysis, visualisation and understanding of consensus sequences in an intuitive way.
+\begin{itemize}
+\item	1. Hulo, N. et al. Nucleic Acids Res 36, D245-249 (2008). 
+\item	2. Schneider, T. D. & R. M. Stephens Nucleic Acids Res 18, 6097-6100 (1990). 
+\item	3. Colaert, N. et al. Nature Methods 6, 786-787 (2009)
+\end{itemize}
+
+
 
 %chapter on the data visualization
 \chapter{Different visualization methods}\label{description}
@@ -199,7 +211,7 @@ Converted fold change (FC$_{con}$) & 2 & \textbf{-2} \\
 
 \end{itemize}
 
-\paragraph{}The color of the amino acids can dynamicly be changed when using the web application but cannot be changed when the iceLogo soap server is used. The amino acids will be colored pink if the amino acid is significantly regulated, and if this specific amino acid does not occure in the positive or reference set. Different scoring systems were developed  and can be changed to generate different iceLogos. If the scoring method is set to \textit{fold change}, the calculated height of a pink amino acid is infinite. Therefore, the height will be set to a specific value. Different scenarios exist for calculating this height.
+\paragraph{}The color of the amino acids can dynamicly be changed when using the web application but cannot be changed when the iceLogo SOAP server is used. The amino acids will be colored pink if the amino acid is significantly regulated, and if this specific amino acid does not occure in the positive or reference set. If the scoring method is set to \textit{fold change}, the calculated height of a pink amino acid is infinite. Therefore, the height will be set to a specific value. Different scenarios exist for calculating this height.
 \begin{itemize}
 \item[] If only \textbf{one} amino acid is regulated and the calculated amino acid size is \textbf{infinite}, the height of the amino acid will be the same as the maximal height that can be visualized in the iceLogo.
 \item[] If \textbf{more} amino acids are regulated and \textbf{all} the calculated amino acid sizes are \textbf{infinite}, the height of the amino acids will be the same as the maximal height that can be visualized in the iceLogo divided by the nummer of regultated amino acids on that position. All the regulated and infinite amino acids must be either over- or under-represented.
@@ -301,16 +313,78 @@ The red line in the pink zone represents the mean of the means used for the calc
 
 \paragraph{}The reference set is used to create a gray zone on the graph. This zone represents the non-regulated region. This non-regulated zone (the confidence interval) is determinded by the p-value and the background standard deviation. Two ways exist to create this background standard deviation.
 \begin{enumerate}
-\item When the static iceLogo method is used (available both in the web application and the iceLogo soap server) a standard deviation will be calculated for every position. This standard deviation will be calculated on 100 means. One such a mean, is the mean of the amino acid parameter values for N random (based on the reference set) amino acids and N is the sample size. This way, the reference set is used to simulate the background for an amino acid parameter.
+\item When the static iceLogo method is used (available both in the web application and the iceLogo SOAP server) a standard deviation will be calculated for every position. This standard deviation will be calculated on 100 means. One such a mean, is the mean of the amino acid parameter values for N random (based on the reference set) amino acids and N is the sample size. This way, the reference set is used to simulate the background for an amino acid parameter.
 \item When the sampling iceLogo method is used (only available via the iceLogo SOAP server), a background standard deviation will be calculated for every position. This standard deviation will be calculated on X parameter value means. X is the dimension of sampling. One such a mean, is the mean of the sampled amino acids parameter for a specific dimension. This way, the reference set is used as the background for an amino acid parameter. 
 \end{enumerate}
 The dark line in the grey zone represents the mean of the means used for the calculation of the background standard 
 deviation.
 
+\section{Examples}
+\subsection{iceLogo}
+\paragraph{}An iceLogo was created for 452 human Granzyme B substrates (see \htmladdnormallink{Van Damme, P et al.}{http://www.ncbi.nlm.nih.gov/pubmed/18836177}). The processing sites of the subtrates of this protease are between positions 0 and 1. These sites were compared to a reference set. This reference set is the average amino acid occurrence for the human Swiss-Prot proteome.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=2]{example1.png}
+\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=1}.}
+\label{example1}
+\end{center}
+\end{figure}
+
+\subsection{Heat map}
+\paragraph{}A heat map was created for 452 human Granzyme B substrates (see \htmladdnormallink{Van Damme, P et al.}{http://www.ncbi.nlm.nih.gov/pubmed/18836177}). The processing sites of the subtrates of this protease are between positions 0 and 1.  These sites were compared to a reference set. This reference set is the average amino acid occurrence for the human Swiss-Prot proteome.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1.5]{example2.png}
+\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=2}.}
+\label{example2}
+\end{center}
+\end{figure}
+
+\subsection{Sequence logo}
+\paragraph{}A sequence logo was created for 452 human Granzyme B substrates (see \htmladdnormallink{Van Damme, P et al.}{http://www.ncbi.nlm.nih.gov/pubmed/18836177}). The processing sites of the subtrates of this protease are between positions 0 and 1.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=2]{example3.png}
+\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=3}.}
+\label{example3}
+\end{center}
+\end{figure}
+
+\subsection{Filled logo}
+\paragraph{}A filled logo was created for 452 human Granzyme B substrates (see \htmladdnormallink{Van Damme, P et al.}{http://www.ncbi.nlm.nih.gov/pubmed/18836177}). The processing sites of the subtrates of this protease are between positions 0 and 1.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=2]{example4.png}
+\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=4}.}
+\label{example4}
+\end{center}
+\end{figure}
+
+\subsection{Amino acid parameter graph}
+\paragraph{}An amino acid parameter graph was created for 452 human Granzyme B substrates (see \htmladdnormallink{Van Damme, P et al.}{http://www.ncbi.nlm.nih.gov/pubmed/18836177}). The processing sites of the subtrates of this protease are between positions 0 and 1. These sites were compared to a reference set. This reference set is the average amino acid occurrence for the human Swiss-Prot proteome. The amino acid parameter used was the "net charge".
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=2]{example5.png}
+\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=5}.}
+\label{example5}
+\end{center}
+\end{figure}
+
+\subsection{Correlation line}
+\paragraph{}A correlation line was created for 52 mouse caspase 3 (see \htmladdnormallink{Demon, D et al.}{http://www.ncbi.nlm.nih.gov/pubmed/19759058}). The processing sites of the subtrates of this protease are between positions 0 and 1. These sites were compared to a reference set. This reference set is the average amino acid occurrence for the human Swiss-Prot proteome. The substitution matrix was set to "blosum 62".
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=2]{example6.png}
+\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=6}.}
+\label{example6}
+\end{center}
+\end{figure}
+
+
 \chapter{Statistics}
 \paragraph{}The web application can only use the static reference method for the creation of iceLogo figures. The SOAP server on the other hand can use both the static and the sampling reference method.
 \section{Static reference method}
-\paragraph{}Two different types of reference set can be used in this method. One is the "fixed reference set" ant the other is the "proteome background reference set". The first type of reference set is used in the different SOAP method that start with "getStaticReference...". In this type, a reference set will be created from a multiple sequence alignment. In the second reference method, the reference set will be created with the average occurrence of amino acids for a specific species in Swiss-Prot.
+\paragraph{}Two different types of reference set can be used in this method. One is the "fixed reference set" and the other is the "proteome background reference set". The first type of reference set is used in the different SOAP method that start with "getStaticReference...". In this type, a reference set will be created from a multiple sequence alignment. In the second reference method, the reference set will be created with the average occurrence of amino acids for a specific species in Swiss-Prot.
 \paragraph{}Different parameters must be calculated before iceLogo can decide if the presence of a specific amino acid at a specific position is significant.
 \begin{description}
 \item[Sample size] The sample size is of great importance in the calculation of the standard deviation. The sample size is defined by the positive set and the reference set. When the sets are both multiple sequence alignments, the smallest set size (the multiple sequence alignment with the least sequence lines) will be used as the sample size. If the reference set is created with the proteome background method, the size of the positive set will be used as the sample size.
@@ -325,7 +399,7 @@ deviation.
 
 
 \section{Sampling reference set} \label{sampling}
-\paragraph{}The second method, creating the reference set from a FASTA file. Sampling from a FASTA file comes both with advantages and drawbacks. When using static amino acid frequencies, one assumes that amino acid usage is generally equal to that of the whole proteome. But since this assumption is not actively tested by static methods, these methods might be prone to error. Therefore the major advantage of sampling from a FASTA sequence database is such that (unexpected) variation in amino acid usage is included in the sampling test. For example, Crooks et al. published in 2004 on deviating amino acid usages  at protein extremities. Or else, amino acids have an elevated probability to repeat themselves, which might  lead an increased translation efficiency. Both examples could lead to unwanted statistical interaction and invalid conclusions. The major drawback is that the FASTA file must be repeatedly accessed and this computation comes with a time cost. Compared to instantaneously creating a static reference set, the sampling from the human subset of Swiss-Prot might last a minute or more. This is the reason why this type was not implemented in the web application and can only be accessed via the SOAP server.
+\paragraph{}The second method is creating the reference set from a FASTA file. Sampling from a FASTA file comes both with advantages and drawbacks. When using static amino acid frequencies, one assumes that amino acid usage is generally equal to that of the whole proteome. But since this assumption is not actively tested by static methods, these methods might be prone to error. Therefore the major advantage of sampling from a FASTA sequence database is such that (unexpected) variation in amino acid usage is included in the sampling test. The major drawback is that the FASTA file must be repeatedly accessed and this computation comes with a time cost. Compared to instantaneously creating a static reference set, the sampling from the human subset of Swiss-Prot might last a minute or more. This is the reason why this type was not implemented in the web application and can only be accessed via the SOAP server.
 
 \subsection{Statistics}
 The reference set is the backbone for the statistics by reflecting the probability of finding an amino acid (AA) at random or under certain conditions. This is done as following. If the experimental set contains $n$ peptides, iceLogo samples $n$ peptides from a FASTA file and thereby calculates individual amino acid frequencies. If this process is iterated for at least 30 times, then the central limit theorem tells us we are allowed to infer normally distributed reference statistics with a mean and a standard deviation for each amino acid (\ref{eq_normal_dist_aa}). Finally the experimental sequence set, also containing n peptides, can then be tested against this reference distribution and conclusions can be drawn in terms of probability (\ref{eq_prob_aa}) by performing a $t$-test.
@@ -355,7 +429,7 @@ P(AA) = \frac{1}{{\sigma_{AA} \sqrt {2\pi } }}e^{{{ - \left( {x - \mu_{AA} } \ri
 	
 	These options enable extra fine-tuning of the sampling algorithm.
 	\begin{description}
-		\item[Iteration size] Set the number of iterations for calculating the mean $\bar{\mu}_{AA}$ and the standard deviation $\bar{\sigma}_{AA}$  on the frequency per amino acid.
+		
 		\item[Terminal - Anchor start position] Set the offset to start terminal sampling 
 		\item[Terminal - Direction] Set the direction to either sample peptides from the N- or C-terminal end of the protein. 
 		\item[Regional - Sampling position] This value indicates which position the iceLogo algorithm has take as anchored experimental position.  
@@ -367,7 +441,7 @@ P(AA) = \frac{1}{{\sigma_{AA} \sqrt {2\pi } }}e^{{{ - \left( {x - \mu_{AA} } \ri
 \chapter{Creating different visualizations}\label{creation}
 \section{Web application} \label{web}
 \paragraph{}Creating a visualization is very easy with the web application. The experimental set must be given as a multiple sequence alignment. The exact format of the mutliple sequence alignment can be seen on the web page when the sample data is loaded (click "Load Human Granzyme B substrates as sample data" just beneath the experimental set text area). The reference set can also be a mutiple sequence alignment. This can be set in the "Reference set" text area. However, a Swiss-Prot composition for a specific species can also be selected. This is done by checking the "Swiss-Prot composition" checkbox and selecting a valid scientific species name in the text box next to the checkbox. 
-\paragraph{}Generating the image is done by clicking the "Generate" button below the sequence set text areas. Whenever an image is created this can also be viewed in different image types. The default visualized image is a jpeg. A pdf, tiff, png and svg version of this image can be found when the links -that appear after the loading of the image below the "Generate" button- are clicked. If the user created more than one image in one session these can be revisualized by clicking the "next" and "previous" buttons below the "Generate" button.
+\paragraph{}Generating the image is done by clicking the "Generate" button below the sequence set text areas. Whenever an image is created this can also be viewed in different image types. The default visualized image is a jpeg. A pdf, tiff, png and svg version of this image can be found when the links -that appear after the loading of the image below the "Generate" button is done- are clicked. If the user created more than one image in one session these can be revisualized by clicking the "next" and "previous" buttons below the "Generate" button.
 \paragraph{}Additional image and iceLogo parameters can be set below the "Generate" button. This include choosing the scoring type, the visualization method, the colors of the letters, the size of the image ... . 
 
 
