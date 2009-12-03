@@ -491,7 +491,7 @@ function postLogo(){
              }
         }
     }
-    if(pValue > 1 || pValue<=0){
+    if(pValue >= 1 || pValue<=0){
         sendRequest = false;
         alert(pValue + ' is not a valid number! The P value must be between 0 and 1.');
         //do not send another warning
