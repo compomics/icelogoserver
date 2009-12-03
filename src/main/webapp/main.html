@@ -38,14 +38,15 @@ return answer;
         position-specific background set, or to a background set that is influenced by the experimental protocol. In addition, underrepresented
         elements – non-tolerated amino acids or nucleotides – are generally not or not statistically well presented.
         <br>
-        We here introduce iceLogo<sup>3</sup> which takes the analysis and visualisation of consensus patterns in aligned peptide sequences
+        <br>
+        Recently we introduced iceLogo<sup>3</sup> which takes the analysis and visualisation of consensus patterns in aligned peptide sequences
         to a new level. IceLogo is a free, open source Java application that can be downloaded at
-        <a href="http://icelogo.googlecode.com/">http://icelogo.googlecode.com/</a>. IceLogo can also be used via this web application and a SOAP web server.
-        Instead of relying on information theory, iceLogo builds
-        on probability theory. This theory and the iceLogo algorithm is explained in the manual.
-        An appropriate reference set must be defined by he user, allowing it to be tailored to ideally
-        approximate the expected background distribution. The experimental sequence set is generally a multiple sequence alignment of peptides
-        that are expected to share sequence features. These two set will be used in a probability analysis and the result is shown in complementary illustrations 
+        <a href="http://icelogo.googlecode.com/">http://icelogo.googlecode.com/</a>. Here we present an iceLogo web application and a SOAP web server.
+        Instead of relying on the information theory, iceLogo builds
+        on the probability theory. This theory and the iceLogo algorithm is explained in the <a href="manual.pdf">manual</a>.
+        Basically the algorithm takes the experimental set normally used to
+generate a sequence logo and compares it with a reference set. This reference set can be congurated by the user allowing it to be tailored to ideally approximate the expected background
+distribution. The experimental sequence set is generally a multiple sequence alignment of peptides that are expected to share sequence features. These two set will be used in a probability analysis and the result is shown in complementary illustrations 
         like heat maps, amino acid parameter graphs and so-called iceLogos, which were all developed to aid analysis, visualisation and
         understanding of consensus sequences in an intuitive way.
         <br>
