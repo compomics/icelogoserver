@@ -1,47 +1,62 @@
-\contentsline {chapter}{\numberline {1}Different visualization methods}{1}
-\contentsline {section}{\numberline {1.1}iceLogo}{1}
-\contentsline {paragraph}{}{1}
-\contentsline {paragraph}{}{1}
-\contentsline {paragraph}{}{1}
-\contentsline {paragraph}{}{2}
-\contentsline {section}{\numberline {1.2}Heat map}{3}
-\contentsline {paragraph}{}{3}
-\contentsline {paragraph}{}{3}
-\contentsline {section}{\numberline {1.3}Sequence logo}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {paragraph}{}{5}
-\contentsline {paragraph}{}{5}
-\contentsline {paragraph}{}{5}
-\contentsline {paragraph}{}{6}
-\contentsline {section}{\numberline {1.4}Amino acid parameter graph}{6}
-\contentsline {paragraph}{}{6}
-\contentsline {paragraph}{}{6}
-\contentsline {paragraph}{}{6}
-\contentsline {section}{\numberline {1.5}Correlation line}{7}
-\contentsline {paragraph}{}{7}
-\contentsline {paragraph}{}{7}
-\contentsline {paragraph}{}{7}
-\contentsline {chapter}{\numberline {2}Statistics}{9}
-\contentsline {paragraph}{}{9}
-\contentsline {section}{\numberline {2.1}Static reference method}{9}
-\contentsline {paragraph}{}{9}
-\contentsline {paragraph}{}{9}
-\contentsline {paragraph}{}{10}
-\contentsline {section}{\numberline {2.2}Sampling reference set}{10}
-\contentsline {paragraph}{}{10}
-\contentsline {subsection}{\numberline {2.2.1}Statistics}{10}
-\contentsline {subsection}{\numberline {2.2.2}Sampling Types}{11}
-\contentsline {paragraph}{}{11}
-\contentsline {paragraph}{}{11}
-\contentsline {paragraph}{Random}{11}
-\contentsline {paragraph}{Terminal}{11}
-\contentsline {paragraph}{Regional}{11}
-\contentsline {chapter}{\numberline {3}Creating different visualizations}{13}
-\contentsline {section}{\numberline {3.1}Web application}{13}
-\contentsline {paragraph}{}{13}
-\contentsline {paragraph}{}{13}
-\contentsline {paragraph}{}{13}
-\contentsline {section}{\numberline {3.2}SOAP server}{13}
-\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{1}{section*.3}
+\contentsline {paragraph}{}{1}{section*.4}
+\contentsline {chapter}{\numberline {1}Different visualization methods}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}iceLogo}{2}{section.1.1}
+\contentsline {paragraph}{}{2}{section*.5}
+\contentsline {paragraph}{}{2}{section*.6}
+\contentsline {paragraph}{}{2}{section*.7}
+\contentsline {paragraph}{}{3}{section*.8}
+\contentsline {section}{\numberline {1.2}Heat map}{4}{section.1.2}
+\contentsline {paragraph}{}{4}{section*.9}
+\contentsline {paragraph}{}{4}{section*.10}
+\contentsline {section}{\numberline {1.3}Sequence logo}{5}{section.1.3}
+\contentsline {paragraph}{}{5}{section*.11}
+\contentsline {paragraph}{}{5}{section*.12}
+\contentsline {paragraph}{}{5}{section*.13}
+\contentsline {paragraph}{}{6}{section*.14}
+\contentsline {paragraph}{}{6}{section*.15}
+\contentsline {paragraph}{}{6}{section*.16}
+\contentsline {paragraph}{}{7}{section*.17}
+\contentsline {section}{\numberline {1.4}Amino acid parameter graph}{7}{section.1.4}
+\contentsline {paragraph}{}{7}{section*.18}
+\contentsline {paragraph}{}{7}{section*.19}
+\contentsline {paragraph}{}{7}{section*.20}
+\contentsline {section}{\numberline {1.5}Correlation line}{8}{section.1.5}
+\contentsline {paragraph}{}{8}{section*.21}
+\contentsline {paragraph}{}{8}{section*.22}
+\contentsline {paragraph}{}{8}{section*.23}
+\contentsline {section}{\numberline {1.6}Examples}{9}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}iceLogo}{9}{subsection.1.6.1}
+\contentsline {paragraph}{}{9}{section*.24}
+\contentsline {subsection}{\numberline {1.6.2}Heat map}{10}{subsection.1.6.2}
+\contentsline {paragraph}{}{10}{section*.25}
+\contentsline {subsection}{\numberline {1.6.3}Sequence logo}{11}{subsection.1.6.3}
+\contentsline {paragraph}{}{11}{section*.26}
+\contentsline {subsection}{\numberline {1.6.4}Filled logo}{12}{subsection.1.6.4}
+\contentsline {paragraph}{}{12}{section*.27}
+\contentsline {subsection}{\numberline {1.6.5}Amino acid parameter graph}{13}{subsection.1.6.5}
+\contentsline {paragraph}{}{13}{section*.28}
+\contentsline {subsection}{\numberline {1.6.6}Correlation line}{14}{subsection.1.6.6}
+\contentsline {paragraph}{}{14}{section*.29}
+\contentsline {chapter}{\numberline {2}Statistics}{16}{chapter.2}
+\contentsline {paragraph}{}{16}{section*.30}
+\contentsline {section}{\numberline {2.1}Static reference method}{16}{section.2.1}
+\contentsline {paragraph}{}{16}{section*.31}
+\contentsline {paragraph}{}{16}{section*.32}
+\contentsline {paragraph}{}{17}{section*.33}
+\contentsline {section}{\numberline {2.2}Sampling reference set}{17}{section.2.2}
+\contentsline {paragraph}{}{17}{section*.34}
+\contentsline {subsection}{\numberline {2.2.1}Statistics}{17}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Sampling Types}{17}{subsection.2.2.2}
+\contentsline {paragraph}{}{17}{section*.35}
+\contentsline {paragraph}{}{18}{section*.36}
+\contentsline {paragraph}{Random}{18}{section*.37}
+\contentsline {paragraph}{Terminal}{18}{section*.38}
+\contentsline {paragraph}{Regional}{18}{section*.39}
+\contentsline {chapter}{\numberline {3}Creating different visualizations}{20}{chapter.3}
+\contentsline {section}{\numberline {3.1}Web application}{20}{section.3.1}
+\contentsline {paragraph}{}{20}{section*.40}
+\contentsline {paragraph}{}{20}{section*.41}
+\contentsline {paragraph}{}{20}{section*.42}
+\contentsline {section}{\numberline {3.2}SOAP server}{20}{section.3.2}
+\contentsline {paragraph}{}{20}{section*.43}

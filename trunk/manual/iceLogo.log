@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2009.12.1)  1 DEC 2009 15:37
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2009.12.1)  3 DEC 2009 13:13
 entering extended mode
 **iceLogo.tex
 (iceLogo.tex
@@ -252,32 +252,107 @@ Package: inputenc 2008/03/30 v1.1d Input encoding file
 ("C:\Program Files\MiKTeX 2.7\tex\latex\base\latin1.def"
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ))
+("C:\Program Files\MiKTeX 2.7\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2009/11/27 v6.79k Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\ifxetex\ifxetex.sty"
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\hycolor.sty"
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\xcolor-patch.sty"
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen114
+\Hy@linkcounter=\count101
+\Hy@pagecounter=\count102
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2009/11/27 v6.79k Hyperref: PDFDocEncoding definition (HO)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 3022.
+Package hyperref Info: Link nesting OFF on input line 3027.
+Package hyperref Info: Hyper index ON on input line 3030.
+Package hyperref Info: Plain pages OFF on input line 3037.
+Package hyperref Info: Backreferencing OFF on input line 3042.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3238.
+LaTeX Info: Redefining \url on input line 3475.
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\bitset.sty"
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\intcalc.sty"
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\bigintcalc.sty"
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+))
+\Fld@menulength=\count103
+\Field@Width=\dimen115
+\Fld@charsize=\dimen116
+\Field@toks=\toks22
+Package hyperref Info: Hyper figures OFF on input line 4435.
+Package hyperref Info: Link nesting OFF on input line 4440.
+Package hyperref Info: Hyper index ON on input line 4443.
+Package hyperref Info: backreferencing OFF on input line 4450.
+Package hyperref Info: Link coloring OFF on input line 4455.
+Package hyperref Info: Link coloring with OCG OFF on input line 4460.
+Package hyperref Info: PDF/A mode OFF on input line 4465.
+
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count104
+\c@Item=\count105
+\c@Hfootnote=\count106
+)
+*hyperref using default driver hpdftex*
+("C:\Program Files\MiKTeX 2.7\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2009/11/27 v6.79k Hyperref driver for pdfTeX
+\Fld@listcount=\count107
+\c@bookmark@seq@number=\count108
+\Hy@SectionHShift=\skip46
+)
 ("C:\Program Files\MiKTeX 2.7\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count101
-\float@exts=\toks22
+\c@float@type=\count109
+\float@exts=\toks23
 \float@box=\box28
-\@float@everytoks=\toks23
+\@float@everytoks=\toks24
 \@floatcapt=\box29
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\listings\listings.sty"
-\lst@mode=\count102
+\lst@mode=\count110
 \lst@gtempboxa=\box30
-\lst@token=\toks24
-\lst@length=\count103
-\lst@currlwidth=\dimen114
-\lst@column=\count104
-\lst@pos=\count105
-\lst@lostspace=\dimen115
-\lst@width=\dimen116
-\lst@newlines=\count106
-\lst@lineno=\count107
-\lst@maxwidth=\dimen117
+\lst@token=\toks25
+\lst@length=\count111
+\lst@currlwidth=\dimen117
+\lst@column=\count112
+\lst@pos=\count113
+\lst@lostspace=\dimen118
+\lst@width=\dimen119
+\lst@newlines=\count114
+\lst@lineno=\count115
+\lst@maxwidth=\dimen120
 
 ("C:\Program Files\MiKTeX 2.7\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count108
-\lst@skipnumbers=\count109
+\c@lstnumber=\count116
+\lst@skipnumbers=\count117
 \lst@framebox=\box31
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\listings\listings.cfg"
@@ -287,10 +362,10 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
 ("C:\Program Files\MiKTeX 2.7\tex\latex\natbib\natbib.sty"
 Package: natbib 2009/07/16 8.31 (PWD, AO)
-\bibhang=\skip46
-\bibsep=\skip47
+\bibhang=\skip47
+\bibsep=\skip48
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count110
+\c@NAT@ctr=\count118
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\tocbibind\tocbibind.sty"
 Package: tocbibind 2009/09/04 v1.5i extra ToC listings
@@ -309,7 +384,7 @@ Package: SIunits 2007/12/02 v1.36 Support for the International System of units
  (MH)
 
 
-\@qskwidth=\skip48
+\@qskwidth=\skip49
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 46.
 \symgreek=\mathgroup6
 ("C:\Program Files\MiKTeX 2.7\tex\latex\siunits\SIunits.cfg")
@@ -327,20 +402,20 @@ Package: flafter 2000/07/23 v1.2i Standard LaTeX floats after reference (FMi)
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\fancyhdr\fancyhdr.sty"
-\fancy@headwidth=\skip49
-\f@ncyO@elh=\skip50
-\f@ncyO@erh=\skip51
-\f@ncyO@olh=\skip52
-\f@ncyO@orh=\skip53
-\f@ncyO@elf=\skip54
-\f@ncyO@erf=\skip55
-\f@ncyO@olf=\skip56
-\f@ncyO@orf=\skip57
+\fancy@headwidth=\skip50
+\f@ncyO@elh=\skip51
+\f@ncyO@erh=\skip52
+\f@ncyO@olh=\skip53
+\f@ncyO@orh=\skip54
+\f@ncyO@elf=\skip55
+\f@ncyO@erf=\skip56
+\f@ncyO@olf=\skip57
+\f@ncyO@orf=\skip58
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks25
-\verbatim@line=\toks26
+\every@verbatim=\toks26
+\verbatim@line=\toks27
 \verbatim@in@stream=\read1
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\subfig\subfig.sty"
@@ -351,65 +426,83 @@ Package: caption 2009/10/09 v3.1k Customizing captions (AR)
 
 ("C:\Program Files\MiKTeX 2.7\tex\latex\caption\caption3.sty"
 Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
-\captionmargin=\dimen118
-\captionmargin@=\dimen119
-\captionwidth=\dimen120
-\caption@indent=\dimen121
-\caption@parindent=\dimen122
-\caption@hangindent=\dimen123
+\captionmargin=\dimen121
+\captionmargin@=\dimen122
+\captionwidth=\dimen123
+\caption@indent=\dimen124
+\caption@parindent=\dimen125
+\caption@hangindent=\dimen126
 )
-\c@ContinuedFloat=\count111
+\c@ContinuedFloat=\count119
 Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
-\c@KVtest=\count112
-\sf@farskip=\skip58
-\sf@captopadj=\dimen124
-\sf@capskip=\skip59
-\sf@nearskip=\skip60
-\c@subfigure=\count113
-\c@subfigure@save=\count114
-\c@lofdepth=\count115
-\c@subtable=\count116
-\c@subtable@save=\count117
-\c@lotdepth=\count118
-\sf@top=\skip61
-\sf@bottom=\skip62
+\c@KVtest=\count120
+\sf@farskip=\skip59
+\sf@captopadj=\dimen127
+\sf@capskip=\skip60
+\sf@nearskip=\skip61
+\c@subfigure=\count121
+\c@subfigure@save=\count122
+\c@lofdepth=\count123
+\c@subtable=\count124
+\c@subtable@save=\count125
+\c@lotdepth=\count126
+\sf@top=\skip62
+\sf@bottom=\skip63
 ) (iceLogo.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 85.
 
 ("C:\Program Files\MiKTeX 2.7\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
 
 ("C:\Program Files\MiKTeX 2.7\tex\context\base\supp-pdf.tex"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
-\scratchdimen=\dimen125
+\scratchcounter=\count127
+\scratchdimen=\dimen128
 \scratchbox=\box32
-\nofMPsegments=\count120
-\nofMParguments=\count121
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count122
-\MPscratchDim=\dimen126
-\MPnumerator=\count123
-\everyMPtoPDFconversion=\toks28
+\nofMPsegments=\count128
+\nofMParguments=\count129
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count130
+\MPscratchDim=\dimen129
+\MPnumerator=\count131
+\everyMPtoPDFconversion=\toks29
 )
-\c@lstlisting=\count124
+Package hyperref Info: Link coloring OFF on input line 85.
+ ("C:\Program Files\MiKTeX 2.7\tex\latex\hyperref\nameref.sty"
+Package: nameref 2009/11/27 v2.32 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\refcount.sty"
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count132
+)
+LaTeX Info: Redefining \ref on input line 85.
+LaTeX Info: Redefining \pageref on input line 85.
+ (iceLogo.out)
+(iceLogo.out)
+\@outlinefile=\write3
+\AtBeginShipoutBox=\box33
+\c@lstlisting=\count133
 
 Option `squaren' provided! 
  Command \squaren defined by SIunits package!
@@ -419,20 +512,29 @@ Option `Gray' provided!
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 84.
+LaTeX Info: Redefining \subref on input line 85.
+Package caption Info: Incompatible package detected (regarding \@caption).
+(caption)             \@caption = \long macro:#1[#2]->\NR@gettitle {#2}\NR@@cap
+tion {#1}[{#2}].
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
 Package caption Info: End \AtBeginDocument code.
-<images/VIB.pdf, id=1, 869.2475pt x 1003.75pt>
+<images/VIB.pdf, id=87, 869.2475pt x 1003.75pt>
 File: images/VIB.pdf Graphic file (type pdf)
  <use images/VIB.pdf>
-<images/ugent.pdf, id=2, 107.9232pt x 76.3653pt>
+<images/ugent.pdf, id=88, 107.9232pt x 76.3653pt>
 File: images/ugent.pdf Graphic file (type pdf)
  <use images/ugent.pdf>
-LaTeX Font Info:    Try loading font information for U+msa on input line 122.
+LaTeX Font Info:    Try loading font information for U+msa on input line 123.
 
 ("C:\Program Files\MiKTeX 2.7\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 122.
+LaTeX Font Info:    Try loading font information for U+msb on input line 123.
 
 ("C:\Program Files\MiKTeX 2.7\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -442,42 +544,180 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 {C:/Documents and Settings/All Users/Application Data/MiKTeX/2.7/pdftex/config/
 pdftex.map} <images/VIB.pdf> <images/ugent.pdf>] (iceLogo.toc)
-\tf@toc=\write3
- [1
+\tf@toc=\write4
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.155 \mainmatter
+                  [1
 
 ]
-Chapter 1.
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `latin1'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.159 ...nd protein sequences and rely on Shannon’
+                                                  s information theory to ca...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `latin1'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.159 ... In addition, underrepresented elements –
+                                                   non-tolerated amino acids...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `latin1'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.159 ...on-tolerated amino acids or nucleotides –
+                                                   are generally not or not ...
+
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+! Misplaced alignment tab character &.
+l.163 \item	2. Schneider, T. D. &
+                                  R. M. Stephens Nucleic Acids Res 18, 6097-...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
 [1
 
 
-] [2] <images/heatmap.pdf, id=46, 172.97694pt x 278.37068pt>
+]
+Chapter 1.
+[2
+
+] [3] <images/heatmap.pdf, id=175, 172.97694pt x 278.37068pt>
 File: images/heatmap.pdf Graphic file (type pdf)
 
-<use images/heatmap.pdf> [3] [4 <images/heatmap.pdf>]
-<images/slTryp.png, id=59, 200.75pt x 702.625pt>
+<use images/heatmap.pdf> [4] [5pdfTeX warning (ext4): destination with the same
+ identifier (name{figure.1.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.261 \end{equation}
+                     <images/heatmap.pdf>]
+<images/slTryp.png, id=210, 200.75pt x 702.625pt>
 File: images/slTryp.png Graphic file (type png)
  <use images/slTryp.png>
-<images/10000random.png, id=60, 857.2025pt x 421.575pt>
+<images/10000random.png, id=213, 857.2025pt x 421.575pt>
 File: images/10000random.png Graphic file (type png)
 
-<use images/10000random.png> [5 <images/slTryp.png (PNG copy)>] [6 <images/1000
-0random.png>] [7] [8]
+<use images/10000random.png> [6pdfTeX warning (ext4): destination with the same
+ identifier (name{figure.1.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.287 
+       <images/slTryp.png (PNG copy)>] [7pdfTeX warning (ext4): destination wit
+h the same identifier (name{figure.1.3}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.303 \item W
+             hen the static iceLogo method is used (available both in the we...
+ <images/10000random.png>] [8]
+<images/example1.png, id=250, 180.675pt x 144.54pt>
+File: images/example1.png Graphic file (type png)
+ <use images/example1.png>
+[9] <images/example2.png, id=261, 267.399pt x 144.54pt>
+File: images/example2.png Graphic file (type png)
+
+<use images/example2.png> [10pdfTeX warning (ext4): destination with the same i
+dentifier (name{figure.1.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.342 
+       <images/example1.png>]
+<images/example3.png, id=272, 180.675pt x 144.54pt>
+File: images/example3.png Graphic file (type png)
+ <use images/example3.png>
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.1.5
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.352 
+       <images/example2.png>]
+<images/example4.png, id=285, 180.675pt x 144.54pt>
+File: images/example4.png Graphic file (type png)
+ <use images/example4.png>
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.1.6
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.362 
+       <images/example3.png>]
+<images/example5.png, id=296, 180.675pt x 144.54pt>
+File: images/example5.png Graphic file (type png)
+ <use images/example5.png>
+[13pdfTeX warning (ext4): destination with the same identifier (name{figure.1.7
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.372 
+       <images/example4.png>]
+<images/example6.png, id=308, 180.675pt x 144.54pt>
+File: images/example6.png Graphic file (type png)
+ <use images/example6.png>
+[14pdfTeX warning (ext4): destination with the same identifier (name{figure.1.8
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.382 
+       <images/example5.png>] [15pdfTeX warning (ext4): destination with the sa
+me identifier (name{figure.1.9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.384 \chapter
+              {Statistics} <images/example6.png>]
 Chapter 2.
-[9
+[16
 
-] [10] [11] [12]
+] [17] [18] [19]
 Chapter 3.
-[13
+[20
 
-] [14] (iceLogo.aux) ) 
+] [21] (iceLogo.aux) ) 
 Here is how much of TeX's memory you used:
- 6400 strings out of 95304
- 86088 string characters out of 1183032
- 153612 words of memory out of 1500000
- 9497 multiletter control sequences out of 110000
+ 9415 strings out of 95304
+ 130804 string characters out of 1183032
+ 216197 words of memory out of 1500000
+ 12348 multiletter control sequences out of 110000
  15380 words of font info for 57 fonts, out of 3000000 for 5000
  14 hyphenation exceptions out of 8191
- 44i,13n,43p,1265b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,13n,43p,1265b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Documents and Settings\All Users\Application Data\Mi
 KTeX\2.7\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1095.pk><C:/Program Files/MiKTe
 X 2.7/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.7/fo
@@ -495,9 +735,9 @@ ic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/public/amsfo
 nts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/public/amsfonts/cm/cm
 ti10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 ><C:/Program Files/MiKTeX 2.7/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on iceLogo.pdf (16 pages, 637364 bytes).
+Output written on iceLogo.pdf (23 pages, 894135 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 131072)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 462 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 131072)
+ 224 words of extra memory for PDF output out of 10000 (max. 10000000)
 
