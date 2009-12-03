@@ -106,7 +106,7 @@ function loadExample3(){
     document.getElementById("yAxis").value = 35;
     document.getElementById("foldChange").checked = false;
     document.getElementById("percentage").checked = true;
-    document.getElementById("iceLogoType").checked = true;
+    document.getElementById("iceLogoType").checked = false;
     document.getElementById("heatmapType").checked = false;
     document.getElementById("sequenceLogoType").checked = true;
     document.getElementById("fillLogoType").checked = false;
