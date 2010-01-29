@@ -179,6 +179,7 @@ public class LogoServlet extends HttpServlet {
         } else {
             //use the given negative sequences as a negative set
             String neg = req.getParameter("negativeSequences");
+            neg = neg.replace("\r\n","\n");
             iNegativeSet = neg.split("\n");
             if (iNegativeSet.length == 1) {
                 iNegativeSet = neg.split("\r");
@@ -187,6 +188,7 @@ public class LogoServlet extends HttpServlet {
         }
         //get the positive sequences
         String pos = req.getParameter("positiveSequences");
+        pos = pos.replace("\r\n","\n");
         iPositiveSet = pos.split("\n");
         if (iPositiveSet.length == 1) {
             iPositiveSet = pos.split("\r");

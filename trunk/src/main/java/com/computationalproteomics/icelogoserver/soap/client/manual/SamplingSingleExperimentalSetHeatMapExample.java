@@ -36,7 +36,7 @@ public class SamplingSingleExperimentalSetHeatMapExample {
         try{
 
             // Create the url, this url point to the location of the webservice
-            URL lIcelogoUrl = new URL("http://icelogo.ugent.be/icelogoserver/services/icelogo");
+            URL lIcelogoUrl = new URL("http://iomics.ugent.be/icelogoserver/services/icelogo");
             // Set a String Deserializer for the response ("getFilledLogoReturn")
             SOAPMappingRegistry smr = new SOAPMappingRegistry();
             Deserializer stringDser = new StringDeserializer();

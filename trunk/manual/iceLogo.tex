@@ -144,7 +144,7 @@ Department of Medical Protein Research, VIB, B-9000 Ghent, Belgium
 \vspace{3.5cm}
 
 \date{}
- \url{http://icelogo.ugent.be/}
+ \url{http://iomics.ugent.be/icelogoserver/main.html}
 \end{center}
 \end{titlepage}
 
@@ -325,7 +325,7 @@ deviation.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=2]{example1.png}
-\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=1}.}
+\caption{Change this \htmladdnormallink{example}{http://iomics.ugent.be/icelogoserver/logo.html?example=1}.}
 \label{example1}
 \end{center}
 \end{figure}
@@ -335,7 +335,7 @@ deviation.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=1.5]{example2.png}
-\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=2}.}
+\caption{Change this \htmladdnormallink{example}{http://iomics.ugent.be/icelogoserver/logo.html?example=2}.}
 \label{example2}
 \end{center}
 \end{figure}
@@ -345,7 +345,7 @@ deviation.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=2]{example3.png}
-\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=3}.}
+\caption{Change this \htmladdnormallink{example}{http://iomics.ugent.be/icelogoserver/logo.html?example=3}.}
 \label{example3}
 \end{center}
 \end{figure}
@@ -355,7 +355,7 @@ deviation.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=2]{example4.png}
-\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=4}.}
+\caption{Change this \htmladdnormallink{example}{http://iomics.ugent.be/icelogoserver/logo.html?example=4}.}
 \label{example4}
 \end{center}
 \end{figure}
@@ -365,7 +365,7 @@ deviation.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=2]{example5.png}
-\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=5}.}
+\caption{Change this \htmladdnormallink{example}{http://iomics.ugent.be/icelogoserver/logo.html?example=5}.}
 \label{example5}
 \end{center}
 \end{figure}
@@ -375,13 +375,14 @@ deviation.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=2]{example6.png}
-\caption{Change this \htmladdnormallink{example}{http://icelogo.ugent.be/icelogoserver/logo.html?example=6}.}
+\caption{Change this \htmladdnormallink{example}{http://iomics.ugent.be/icelogoserver/logo.html?example=6}.}
 \label{example6}
 \end{center}
 \end{figure}
 
 
 \chapter{Statistics}
+
 \paragraph{}The web application can only use the static reference method for the creation of iceLogo figures. The SOAP server on the other hand can use both the static and the sampling reference method.
 \section{Static reference method}
 \paragraph{}Two different types of reference set can be used in this method. One is the "fixed reference set" and the other is the "proteome background reference set". The first type of reference set is used in the different SOAP method that start with "getStaticReference...". In this type, a reference set will be created from a multiple sequence alignment. In the second reference method, the reference set will be created with the average occurrence of amino acids for a specific species in Swiss-Prot.
@@ -440,13 +441,13 @@ P(AA) = \frac{1}{{\sigma_{AA} \sqrt {2\pi } }}e^{{{ - \left( {x - \mu_{AA} } \ri
 %chapter on the creation of visualizations
 \chapter{Creating different visualizations}\label{creation}
 \section{Web application} \label{web}
-\paragraph{}Creating a visualization is very easy with the web application. The experimental set must be given as a multiple sequence alignment. The exact format of the mutliple sequence alignment can be seen on the web page when the sample data is loaded (click "Load Human Granzyme B substrates as sample data" just beneath the experimental set text area). The reference set can also be a mutiple sequence alignment. This can be set in the "Reference set" text area. However, a Swiss-Prot composition for a specific species can also be selected. This is done by checking the "Swiss-Prot composition" checkbox and selecting a valid scientific species name in the text box next to the checkbox. 
+\paragraph{}Creating a visualization is very easy with the web application. The experimental set must be given as a multiple sequence alignment. The exact format of the mutliple sequence alignment can be seen on the web page when the sample data is loaded (click "Load Human Granzyme B substrates as sample data" just beneath the experimental set text area). The reference set can be a mutiple sequence alignment. This can be set in the "Reference set" text area. However, a Swiss-Prot composition for a specific species can also be selected. This is done by checking the "Swiss-Prot composition" checkbox and selecting a valid scientific species name in the text box next to the checkbox. 
 \paragraph{}Generating the image is done by clicking the "Generate" button below the sequence set text areas. Whenever an image is created this can also be viewed in different image types. The default visualized image is a jpeg. A pdf, tiff, png and svg version of this image can be found when the links -that appear after the loading of the image below the "Generate" button is done- are clicked. If the user created more than one image in one session these can be revisualized by clicking the "next" and "previous" buttons below the "Generate" button.
 \paragraph{}Additional image and iceLogo parameters can be set below the "Generate" button. This include choosing the scoring type, the visualization method, the colors of the letters, the size of the image ... . 
 
 
 \section{SOAP server} \label{soap}
-\paragraph{}A SOAP server can be accessed via \url{http://icelogo.ugent.be/icelogoserver/services/icelogo}. More information about this SOAP server can be found on \url{http://icelogo.ugent.be/icelogoserver/soap.html}. The wsdl file describing these services and methods can be found on \url{http://icelogo.ugent.be/icelogoserver/icelogo.wsdl}. 
+\paragraph{}A SOAP server can be accessed via \url{http://iomics.ugent.be/icelogoserver/services/icelogo}. More information about this SOAP server can be found on \url{http://iomics.ugent.be/icelogoserver/soap.html}. The wsdl file describing these services and methods can be found on \url{http://iomics.ugent.be/icelogoserver/IceLogo.wsdl}. 
 \backmatter
 
 \end{document}
