@@ -22,7 +22,7 @@ public class IceLogoServiceLocator extends org.apache.axis.client.Service implem
     }
 
     // Use to get a proxy class for icelogo
-    private java.lang.String icelogo_address = "http://icelogo.ugent.be/icelogoserver/services/icelogo";
+    private java.lang.String icelogo_address = "http://iomics.ugent.be/icelogoserver/services/icelogo";
 
     public java.lang.String geticelogoAddress() {
         return icelogo_address;

@@ -16,21 +16,21 @@ if (siw && siw.selectingSomething)
 return answer;
 }//
 </script>
-<center>
+<div style="text-align: center;">
 
 <img src="images/header.png" alt="header"/>
 <hr width="800px">
 <div >
-    <a href="main.html" border="0"><img src="images/main.png" onmouseout="setImage('mainButton','images/main.png');" onmouseover="setImage('mainButton','images/mainHover.png');"id="mainButton" alt="mainbutton"></a>
-    <a href="manual.pdf" border="0"><img id="manualButton" onmouseout="setImage('manualButton','images/manual.png');" onmouseover="setImage('manualButton','images/manualHover.png');" src="images/manual.png" alt="manualButton"></a>
-    <a href="logo.html" border="0"><img id="generateButton" onmouseout="setImage('generateButton','images/create.png');" onmouseover="setImage('generateButton','images/createHover.png');" src="images/create.png" alt="generatebutton"></a>
-    <a href="soap.html" border="0"><img id="soapButton" onmouseout="setImage('soapButton','images/soapSelect.png');" onmouseover="setImage('soapButton','images/soapHover.png');" src="images/soapSelect.png" alt="soapButton"></a>
+    <a href="main.html"><img border="0" src="images/main.png" onmouseout="setImage('mainButton','images/main.png');" onmouseover="setImage('mainButton','images/mainHover.png');"id="mainButton" alt="mainbutton"></a>
+    <a href="manual.pdf"><img border="0" id="manualButton" onmouseout="setImage('manualButton','images/manual.png');" onmouseover="setImage('manualButton','images/manualHover.png');" src="images/manual.png" alt="manualButton"></a>
+    <a href="logo.html"><img border="0" id="generateButton" onmouseout="setImage('generateButton','images/create.png');" onmouseover="setImage('generateButton','images/createHover.png');" src="images/create.png" alt="generatebutton"></a>
+    <a href="soap.html"><img border="0" id="soapButton" onmouseout="setImage('soapButton','images/soapSelect.png');" onmouseover="setImage('soapButton','images/soapHover.png');" src="images/soapSelect.png" alt="soapButton"></a>
 </div>
     <div style="width: 800;" align="left">
         <br>
         <div style="color:#0066CC; font-size:20px;">Introduction</div>
         <br>
-        An iceLogo SOAP (<a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol</a>) Server can be accessed via http://icelogo.ugent.be/icelogoserver/services/icelogo.
+        An iceLogo SOAP (<a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol</a>) Server can be accessed via http://iomics.ugent.be/icelogoserver/services/icelogo.
         This SOAP server provides access to the different iceLogo visualization options (see <a href="#methods">below</a> for the different methods).
         These different methods all create a String with svg content as a result. The iceLogo server and SOAP client examples can be found <a href="http://code.google.com/p/icelogoserver/">here</a>.
         <br>
@@ -52,7 +52,7 @@ return answer;
         <code>
             // Create the url, this url point to the location of the webservice
             <br>
-            URL lIcelogoUrl = new URL("http://icelogo.ugent.be/icelogoserver/services/icelogo");
+            URL lIcelogoUrl = new URL("http://iomics.ugent.be/icelogoserver/services/icelogo");
         </code>
         <br>
         <br>
@@ -1855,7 +1855,7 @@ return answer;
 <hr width="800px">
 <a href="http://code.google.com/p/icelogo/">iceLogo stand alone version</a> <a href="http://code.google.com/p/icelogoserver/">iceLogo server version</a> <a href="http://www.computationalproteomics.com">Computational proteomics</a> <a href="http://www.vib.be">VIB</a> <a href="http://www.ugent.be">University Ghent</a>
 
-</center>
+</div>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

@@ -1196,7 +1196,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:icelogoSoapBinding" name="icelogo">
 
-         <wsdlsoap:address location="http://icelogo.ugent.be/icelogoserver/services/icelogo"/>
+         <wsdlsoap:address location="http://iomics.ugent.be/icelogoserver/services/icelogo"/>
 
       </wsdl:port>
 
