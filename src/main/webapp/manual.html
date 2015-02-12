@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title></title>
+
+    <!-- WICK STEP 1: INSERT CSS -->
+    <link rel="stylesheet" type="text/css" href="wick.css"/>
+    <script type="text/javascript" src="logo.js"></script>
+</head>
+
+<body>
+<script type="text/javascript" language="JavaScript">
+    function checkForm() {
+        answer = true;
+        if (siw && siw.selectingSomething)
+            answer = false;
+        return answer;
+    }//
+</script>
+<div id="content">
+
+    <img src="images/header_2.png" alt="header"/>
+    <hr>
+    <div align="center">
+        <a href="main.html"><img border="0" src="images/main.png"
+                                 onmouseout="this.src='images/main.png'"
+                                 onmouseover="this.src='images/mainHover.png'" id="mainButton"
+                                 alt="mainbutton"></a>
+        <a href="manual.html"><img border="0" id="manualButton"
+                                   onmouseout="this.src='images/manualSelect.png'"
+                                   onmouseover="this.src='images/manualHover.png'"
+                                   src="images/manual.png" alt="manualButton"></a>
+        <a href="logo.html"><img border="0" id="generateButton"
+                                 onmouseout="this.src='images/create.png'"
+                                 onmouseover="this.src='images/createHover.png'"
+                                 src="images/create.png" alt="generatebutton"></a>
+        <a href="soap.html"><img border="0" id="soapButton" onmouseout="this.src='images/soap.png'"
+                                 onmouseover="this.src='images/soapHover.png'" src="images/soap.png"
+                                 alt="soapButton"></a>
+    </div>
+    <div align="left">
+        <br>
+
+        <div style="color:#0066CC; font-size:20px;">Web application</div>
+        <br>
+        Creating a visualization is very easy with the web application. The experimental set must be
+        given as a multiple sequence alignment. The exact format of the multiple sequence alignment
+        can be seen on the web page when the sample data is loaded (click "Load Human Granzyme B
+        substrates as sample data" just beneath the experimental set text area). The reference set can
+        be a multiple sequence alignment. This can be set in the "Reference set" text area. However, a
+        Swiss-Prot composition for a specific species can also be selected. This is done by checking the
+        "Swiss-Prot composition" checkbox and selecting a valid scientific species name in the text box
+        next to the checkbox.
+        <br>
+        <br>
+        Generating the image is done by clicking the "Generate" button below the sequence set text
+        areas. Whenever an image is created this can also be viewed in different image types. The
+        default visualized image is a jpeg. A pdf, tiff, png and svg version of this image can be found
+        when the links -that appear after the loading of the image below the "Generate" button is done-
+        are clicked. If the user created more than one image in one session these can be revisualized by
+        clicking the "next" and "previous" buttons below the "Generate" button.
+        <br>
+        <br>
+        Additional image and iceLogo parameters can be set below the "Generate" button. This
+        include choosing the scoring type, the visualization method, the colors of the letters, the size of
+        the image ... .
+        <br>
+        <br>
+
+        <div style="color:#0066CC; font-size:20px;">SOAP server</div>
+        <br>
+        A SOAP server can be accessed via <a href="http://iomics.ugent.be/icelogoserver/services/icelogo">http://iomics.ugent.be/icelogoserver/services/icelogo</a>.
+        More information about this SOAP server can be found <a
+            href="http://iomics.ugent.be/icelogoserver/soap.html">here</a>.
+        The wsdl file describing these services and methods can be found <a
+            href="http://iomics.ugent.be/icelogoserver/IceLogo.wsdl">here</a>.
+        <br>
+        <br>
+
+        <div style="color:#0066CC; font-size:20px;">Elaborate manual</div>
+        <br>
+        For more insights on the different visualization methods and statistics, download the pdf manual <a
+            href="manual.pdf">here</a>.
+
+    </div>
+
+    <div align="center">
+        <hr>
+        <a href="http://code.google.com/p/icelogo/">iceLogo stand alone version</a> <a
+            href="http://code.google.com/p/icelogoserver/">iceLogo server version</a> <a
+            href="http://www.computationalproteomics.com">Computational proteomics</a> <a
+            href="http://www.vib.be">VIB</a>
+        <a href="http://www.ugent.be">University Ghent</a>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-9963568-4");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }</script>
+</body>
+</html>

@@ -12,7 +12,6 @@ import org.apache.soap.rpc.Parameter;
 import org.apache.soap.rpc.Response;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;

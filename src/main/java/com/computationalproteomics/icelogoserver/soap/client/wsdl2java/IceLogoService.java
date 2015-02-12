@@ -7,8 +7,6 @@
 
 package com.computationalproteomics.icelogoserver.soap.client.wsdl2java;
 
-import com.computationalproteomics.icelogoserver.soap.client.wsdl2java.IceLogo;
-
 public interface IceLogoService extends javax.xml.rpc.Service {
     public java.lang.String geticelogoAddress();
 
