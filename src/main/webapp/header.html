@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>iceLogo</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap-colorselector.css">
+        <link rel="stylesheet" href="/css/prism.css">
+        <link rel="stylesheet" href="/css/site.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="/images/header_2.png" class="header-image">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="center-block nav nav-pills nav-justified">
+                        <li role="presentation" {{#index}}class="active"{{/index}}><a href="/">Home</a></li>
+                        <li role="presentation" {{#create}}class="active"{{/create}}><a href="/create">Create</a></li>
+                        <li role="presentation" {{#manual}}class="active"{{/manual}}><a href="/manual">Manual</a></li>
+                        <li role="presentation" {{#soap}}class="active"{{/soap}}><a href="/soap">SOAP Server</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+        </div>

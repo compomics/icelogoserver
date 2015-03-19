@@ -1,0 +1,50 @@
+{{{header}}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Introduction</h2>
+
+                    <p class="lead">Icelogo is a web service for visualising conserved patterns in protein and nucleotide sequences through probability theory.</p>
+
+                    <h4>Background</h4>
+
+                    <p>Large sequence-based data sets are often scanned for conserved sequence patterns to extract useful biological information<sup>1</sup>. Sequence
+                    logos<sup>2</sup> were the first to visualize conserved patterns in oligonucleotide and protein sequences.</p>
+
+                    <p>They rely on Shannons information theory to calculate the conservation level in a multiple sequence alignment. Usually represented as vertical
+                    stacks of symbols, the stack height reflects the level of conservation and the height is a measure for their frequency at a given position.</p>
+
+                    <h4>Problems with this method</h4>
+
+                    <p>As information theory is based on a combination of entropy, mutual information and the information contained in a random variable, we must
+                    specify a background set or the experimental setting to compare to. In most cases the background is unknown or influenced by a multitude of
+                    experimental and evolutionary factors, so a general solution is usually not forthcoming.</p>
+
+                    <p>Another common problem is that excluding or under-representing elements disrupts the statistical models, as is often the case in a biological context.</p>
+
+                    <h4>Our solution</h4>
+
+                    <p>To battle these problems we have developed <a href="http://icelogo.googlecode.com/">iceLogo</a><sup>3</sup>, a free open source Java application based on probability theory instead of information
+                    theory. While Java employs the "write once, run anywhere" paradigm, we offer usage of this algorithm as a SOAP web service and a web application to further
+                    help with making IceLogo accessible. More info on the IceLogo algorithm can be found in the <a href="manual.html">manual</a>.</p>
+
+                    <ol class="references">
+                        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/18003654">Hulo, N. et al. Nucleic Acids Res 36, D245-249 (2008)</a></li>
+                        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/2172928">Schneider, T. D. & R. M. Stephens Nucleic Acids Res 18, 6097-6100 (1990)</a></li>
+                        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/19876014">Colaert, N. et al. Nature Methods 6, 786-787 (2009)</a></li>
+                    </ol>
+
+                    <h2>Reference</h2>
+
+                    <p>If you use the iceLogo web application or the iceLogo stand alone version do not forget to reference the iceLogo publication.</p>
+
+                    <a href="http://www.ncbi.nlm.nih.gov/pubmed/19876014">Colaert, N. et al. Nature Methods 6, 786-787 (2009)</a>
+
+                    <h2>Acquiring icelogo</h2>
+
+                    <p>A stand alone java application that can generate iceLogos can be found <a href="http://code.google.com/p/icelogo/">here</a>. The iceLogo server and
+                    SOAP client examples can be found <a href="http://code.google.com/p/icelogoserver/">here</a>.</p>
+                </div>
+            </div>
+        </div>
+{{{footer}}}

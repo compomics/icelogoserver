@@ -1,0 +1,102 @@
+.container {
+    width: 800px;
+}
+.header-image {
+    margin: 10px 0 10px -20px;
+}
+.nav-justified > li {
+    padding: 0 5px;
+}
+h2, h4 {
+    color:#0066CC;
+}
+.references {
+    padding-left: 20px;
+}
+textarea {
+    font-family: Consolas, Lucida Console, monospace;
+}
+#logo-image {
+    width: 100%;
+}
+.tt-dropdown-menu {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.modal-body {
+    height: 300px;
+    overflow-y: scroll;
+}
+.fixed-width {
+    width: 385px;
+}
+.dropdown-colorselector > .dropdown-menu {
+    min-width: 202px;
+    max-width: 202px;
+}
+#color-list li {
+    font-family: Consolas, Lucida Console, monospace;
+    text-align: center;
+}
+.section-header {
+    color: #0066CC;
+}
+pre {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+body {
+    position: relative
+}
+
+.section-header {
+    color: #0066CC;
+}
+
+#manual-container {
+    width: 80%
+}
+
+#sidebar nav {
+    position: fixed;
+    float: left;
+}
+
+#heatmap-visualisation-textblock {
+    display: none
+}
+
+#sequencelogo-visualisation-textblock {
+    display: none
+}
+
+#filledlogo-visualisation-textblock {
+    display: none
+}
+
+#aa-param-graph-visualisation-textblock {
+    display: none
+}
+
+#correlation-line-visualisation-textblock {
+    display: none
+}
+
+#sidebar {
+    position: relative;
+}
+
+.partition {
+    background-color: #fff;
+    border-radius: 4px 4px 0 0;
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px 10px 10px 15px;
+    margin: 0 -15px 15px;
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    box-shadow: #979797;
+}
