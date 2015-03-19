@@ -1,33 +1,25 @@
 package com.computationalproteomics.icelogoserver.webapplication;
 
 
-import be.proteomics.logo.core.aaindex.AAIndexMatrix;
-import be.proteomics.logo.core.aaindex.AAIndexParameterMatrix;
-import be.proteomics.logo.core.aaindex.AAIndexSubstitutionMatrix;
-import be.proteomics.logo.core.data.MainInformationFeeder;
-import be.proteomics.logo.core.data.sequenceset.RawSequenceSet;
-import be.proteomics.logo.core.dbComposition.SwissProtComposition;
-import be.proteomics.logo.core.enumeration.*;
-import be.proteomics.logo.core.factory.AminoAcidStatisticsFactory;
-import be.proteomics.logo.core.interfaces.AminoAcidStatistics;
-import be.proteomics.logo.core.model.OneSampleMatrixDataModel;
-import be.proteomics.logo.gui.graph.*;
-
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.*;
-import java.util.Properties;
-import java.util.Vector;
+import com.compomics.icelogo.core.aaindex.AAIndexMatrix;
+import com.compomics.icelogo.core.aaindex.AAIndexParameterMatrix;
+import com.compomics.icelogo.core.aaindex.AAIndexSubstitutionMatrix;
+import com.compomics.icelogo.core.data.MainInformationFeeder;
+import com.compomics.icelogo.core.data.sequenceset.RawSequenceSet;
+import com.compomics.icelogo.core.dbComposition.SwissProtComposition;
+import com.compomics.icelogo.core.enumeration.*;
+import com.compomics.icelogo.core.factory.AminoAcidStatisticsFactory;
+import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
+import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
+import com.compomics.icelogo.gui.graph.*;
+import com.compomics.icelogo.core.enumeration.ColorScheme;
 
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.transcoder.Transcoder;
-import org.apache.batik.transcoder.image.JPEGTranscoder;
+import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
-import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.image.JPEGTranscoder;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.batik.transcoder.image.TIFFTranscoder;
 import org.apache.batik.transcoder.svg2svg.SVGTranscoder;
@@ -35,6 +27,14 @@ import org.apache.batik.util.XMLResourceDescriptor;
 import org.apache.fop.svg.PDFTranscoder;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.svg.SVGDocument;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.Properties;
+import java.util.Vector;
 
 
 /**
@@ -199,9 +199,8 @@ public class LogoServlet extends HttpServlet {
         } else {
             iScoreType = ScoringTypeEnum.PERCENTAGE;
         }
-        //create color scheme
-        iColorScheme = new ColorScheme(this.getColorFromString(req.getParameter("ComboboxA")), ColorEnum.BLACK, this.getColorFromString(req.getParameter("ComboboxC")), this.getColorFromString(req.getParameter("ComboboxD")), this.getColorFromString(req.getParameter("ComboboxE")), this.getColorFromString(req.getParameter("ComboboxF")), this.getColorFromString(req.getParameter("ComboboxG")), this.getColorFromString(req.getParameter("ComboboxH")), this.getColorFromString(req.getParameter("ComboboxI")), ColorEnum.BLACK, this.getColorFromString(req.getParameter("ComboboxK")), this.getColorFromString(req.getParameter("ComboboxL")), this.getColorFromString(req.getParameter("ComboboxM")), this.getColorFromString(req.getParameter("ComboboxN")), ColorEnum.BLACK, this.getColorFromString(req.getParameter("ComboboxP")), this.getColorFromString(req.getParameter("ComboboxQ")), this.getColorFromString(req.getParameter("ComboboxR")), this.getColorFromString(req.getParameter("ComboboxS")), this.getColorFromString(req.getParameter("ComboboxT")), ColorEnum.BLACK, this.getColorFromString(req.getParameter("ComboboxV")), this.getColorFromString(req.getParameter("ComboboxW")), ColorEnum.BLACK, this.getColorFromString(req.getParameter("ComboboxY")), ColorEnum.BLACK);
 
+        iColorScheme = new ColorScheme(req.getParameterValues("colors"));
 
         //Create model and matrixes for the logo
         RawSequenceSet lRawPositiveSequenceSet = new RawSequenceSet("Positive sequences");
@@ -390,18 +389,6 @@ public class LogoServlet extends HttpServlet {
         }
 
 
-    }
-
-    /**
-     * The get method will send the servlet request and response to the post method.
-     *
-     * @param req The servlet request.
-     * @param res The servlet response.
-     * @throws ServletException
-     * @throws IOException
-     */
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        this.doPost(req, res);
     }
 
     /**

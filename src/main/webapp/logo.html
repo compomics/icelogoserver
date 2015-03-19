@@ -1,560 +1,215 @@
-<html>
-<head>
-    <title></title>
+{{{header}}}
+        <div class="container">
+            <div class="row">
+                <img src="images/white.gif" alt="Logo image" id="logo-image" class="hidden">
 
-    <!-- WICK STEP 1: INSERT CSS -->
-    <link rel="stylesheet" type="text/css" href="wick.css"/>
-    <script type="text/javascript" src="logo.js"></script>
-</head>
+                <form id="logoForm" method="post" action="/logo">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="positiveSequences" data-toggle="popover" data-trigger="hover" data-html="true" data-content="The experimental set">Experimental set</label>
+                                <textarea name="positiveSequences" id="positiveSequences" class="form-control" rows="10"></textarea>
+                            </div>
 
-<body onLoad="checkExample()">
-<script type="text/javascript" language="JavaScript">
-    function checkForm() {
-        answer = true;
-        if (siw && siw.selectingSomething)
-            answer = false;
-        return answer;
-    }//
-</script>
-<div id="content">
+                            <a href="#" class="btn btn-default btn-block" id="load_sample_data">Load Human Granzyme B substrates as sample data</a>
 
-    <img src="images/header_2.png" alt="header"/>
-    <hr>
-
-    <div align="center">
-        <a href="main.html"><img border="0" src="images/main.png"
-                                 onmouseout="this.src='images/main.png'"
-                                 onmouseover="this.src='images/mainHover.png'" id="mainButton"
-                                 alt="mainbutton"></a>
-        <a href="manual.html"><img border="0" id="manualButton"
-                                   onmouseout="this.src='images/manual.png'"
-                                   onmouseover="this.src='images/manualHover.png'"
-                                   src="images/manual.png" alt="manualButton"></a>
-        <a href="logo.html"><img border="0" id="generateButton"
-                                 onmouseout="this.src='images/createSelect.png'"
-                                 onmouseover="this.src='images/createHover.png'"
-                                 src="images/create.png" alt="generatebutton"></a>
-        <a href="soap.html"><img border="0" id="soapButton" onmouseout="this.src='images/soap.png'"
-                                 onmouseover="this.src='images/soapHover.png'" src="images/soapHover.png"
-                                 alt="soapButton"></a>
-    </div>
-
-
-    <form id="logoForm" name="logo" method="post" action="/icelogoserver/LogoServlet" onsubmit="return checkForm()">
-        <div align="center">
-            <table width="800px" border="0" cellpadding="0" cellspacing="1" id="mainTable">
-                <tr>
-                    <td align="left" valign="top">
-                        <table width="100%" border="0" cellpadding="0" cellspacing="1" id="sequenceTable">
-                            <tr>
-                                <td align="center" width="50%" valign="top">Experimental set</td>
-                                <td align="center" width="50%" valign="top">Reference set</td>
-                            </tr>
-                            <tr>
-                                <td align="center" width="50%" valign="top"><textarea name="positiveSequences"
-                                                                                      id="positiveSequences" rows="20"
-                                                                                      cols="43"></textarea><br><a
-                                        style="cursor: pointer" onclick="loadSampleData();">Load Human Granzyme B
-                                    substrates as sample data</a></td>
-                                <td align="center" width="50%" valign="top">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="1" id="negSeqTable">
-                                        <tr>
-                                            <td align="center" height="50%" valign="center"><input type="checkbox"
-                                                                                                   id="negSeqChb"
-                                                                                                   name="negSeqChb"
-                                                                                                   value=""
-                                                                                                   onclick="checkUncheck('negSeqChb','negSwChb')">
-                                            </td>
-                                            <td align="center" height="50%" valign="top"><textarea
-                                                    name="negativeSequences" id="negativeSequences" rows="15"
-                                                    cols="43"></textarea></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center" width="50%" valign="center"><input type="checkbox"
-                                                                                                  id="negSwChb"
-                                                                                                  name="negSwChb"
-                                                                                                  value="use"
-                                                                                                  onclick="checkUncheck('negSwChb','negSeqChb')"
-                                                                                                  checked></td>
-                                            <td align="center" width="50%" valign="top">
-                                                <table width="100%" border="0" cellpadding="0" cellspacing="1"
-                                                       id="Table3">
-                                                    <tr>
-                                                        <td align="center" valign="top">Swiss-Prot composition</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="center" valign="top">
-                                                            <div id="wickStatus" style="display:none">
-                                                                Loading ... please hold!
-                                                            </div>
-                                                            <form onsubmit="return checkForm()">
-                                                                <!-- WICK STEP 5: this prevents form from being submitted right-away if a user hits RETURN to select an address -->
-                                                                <input class="wickEnabled" type="text" id="species"
-                                                                       name="species" size="50"/><br/>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" valign="top">
-                        <br>
-
-                        <div><img src="images/white.gif" alt="" id="logoImg" name="logoImg"></div>
-                        <br>
-                        <input style="width:61%;height:25px;z-index:5" onclick="postLogo();hideSave();" type="button"
-                               id="makeLogo" name="makeLogo" value="Generate"><br>
-
-                        <div style="width:61%">
-                            <img align="left" style="display: none;cursor:pointer" onclick="previous();"
-                                 alt="leftButton" src="left.png" name="left" id="left" title="previous"/>
-
-                            <div style="display:none" id="savePng"></div>
-                            <div style="display: none" id="saveTiff"></div>
-                            <div style="display: none" id="savePdf"></div>
-                            <div style="display: none" id="saveSvg"></div>
-                            <img align="right" style="display: none;cursor:pointer" onclick="next();" alt="rightButton"
-                                 src="right.png" name="right" id="right" title="next"/>
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="reference" id="reference-set" value="reference_set" checked>
+                                        Use reference set
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="reference" id="reference-swiss-prot" value="swiss-prot">
+                                        Use Swiss-Prot composition
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="negativeSequences" data-trigger="hover" data-html="true" data-content="The reference set">Reference set</label>
+                                <textarea name="negativeSequences" id="negativeSequences" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="species" data-trigger="hover" data-html="true" data-content="The species">Swiss-Prot composition</label>
+                                <small class="pull-right"><a href="#" data-toggle="modal" data-target="#speciesModal">See all...</a></small>
+                                <input class="form-control" type="text" id="species" name="species" size="50">
+                            </div>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="left" valign="top">
-                        <table width="100%" border="0" cellpadding="0" cellspacing="1" id="parameterTable">
-                            <tr>
-                                <td align="center" width="50%" valign="top">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="1"
-                                           id="leftParameterTable">
-                                        <tr>
-                                            <td align="left" valign="center">Scoring system</td>
-                                            <td align="left" valign="top">
-                                                <table width="100%" border="0" cellpadding="0" cellspacing="1"
-                                                       id="scoreSystemTable">
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="foldChange"
-                                                                                             name="foldChange"
-                                                                                             value="use"
-                                                                                             onclick="checkUncheck('foldChange','percentage')">
-                                                        </td>
-                                                        <td align="left" valign="top">Fold change</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="percentage"
-                                                                                             name="percentage" value=""
-                                                                                             onclick="checkUncheck('percentage','foldChange')"
-                                                                                             checked></td>
-                                                        <td align="left" valign="top">Percentage difference</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" valign="top">Start position</td>
-                                            <td align="left" valign="top"><input type="text" name="start" id="start"
-                                                                                 value="0"></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" valign="top">P-value</td>
-                                            <td align="left" valign="top"><input type="text" name="pValue" id="pValue"
-                                                                                 value="0.05"></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" valign="top">Y-axis dimension</td>
-                                            <td align="left" valign="top"><input type="text" name="yAxis" id="yAxis"
-                                                                                 value="10"></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" valign="center">Visualization type</td>
-                                            <td align="left" valign="top">
-                                                <table width="100%" border="0" cellpadding="0" cellspacing="1"
-                                                       id="visualizationTypeTable">
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="iceLogoType"
-                                                                                             name="iceLogoType"
-                                                                                             value="use"
-                                                                                             onclick="checkUncheck5('iceLogoType','heatmapType','sequenceLogoType','fillLogoType','aaparamType','corrLine')"
-                                                                                             checked></td>
-                                                        <td align="left" valign="top">iceLogo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="heatmapType"
-                                                                                             name="heatmapType" value=""
-                                                                                             onclick="checkUncheck5('heatmapType','iceLogoType','sequenceLogoType','fillLogoType','aaparamType','corrLine')">
-                                                        </td>
-                                                        <td align="left" valign="top">Heat map</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="sequenceLogoType"
-                                                                                             name="sequenceLogoType"
-                                                                                             value=""
-                                                                                             onclick="checkUncheck5('sequenceLogoType','iceLogoType','heatmapType','fillLogoType','aaparamType','corrLine')">
-                                                        </td>
-                                                        <td align="left" valign="top">Sequence logo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="fillLogoType"
-                                                                                             name="fillLogoType"
-                                                                                             value=""
-                                                                                             onclick="checkUncheck5('fillLogoType','sequenceLogoType','iceLogoType','heatmapType','aaparamType','corrLine')">
-                                                        </td>
-                                                        <td align="left" valign="top">Filled logo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="aaparamType"
-                                                                                             name="aaparamType" value=""
-                                                                                             onclick="checkUncheck5('aaparamType','fillLogoType','sequenceLogoType','iceLogoType','heatmapType','corrLine')">
-                                                        </td>
-                                                        <td align="left" valign="top">Aa parameter graph</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="center" valign="top" colspan="2">
-                                                            <div id="aaMatrixDiv" style="display:none">
-                                                                Loading ... please hold!
-                                                            </div>
-                                                            <form onsubmit="return checkForm()">
-                                                                <!-- WICK STEP 5: this prevents form from being submitted right-away if a user hits RETURN to select an address -->
-                                                                <input class="wickEnabled" type="text" id="aaMatrix"
-                                                                       name="aaMatrix" size="35"/><br/>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="left" valign="top"><input type="checkbox"
-                                                                                             id="corrLine"
-                                                                                             name="corrLine" value=""
-                                                                                             onclick="checkUncheck5('corrLine','fillLogoType','sequenceLogoType','iceLogoType','heatmapType','aaparamType')">
-                                                        </td>
-                                                        <td align="left" valign="top">Correlation line</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="center" valign="top" colspan="2">
-                                                            <div id="substitutionMatrixDiv" style="display:none">
-                                                                Loading ... please hold!
-                                                            </div>
-                                                            <form onsubmit="return checkForm()">
-                                                                <!-- WICK STEP 5: this prevents form from being submitted right-away if a user hits RETURN to select an address -->
-                                                                <input class="wickEnabled" type="text"
-                                                                       id="substitutionMatrix" name="substitutionMatrix"
-                                                                       size="35"/><br/>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label data-trigger="hover" data-html="true" data-content="The scoring system">Scoring system</label>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="A change of fold">
+                                        <input type="radio" name="scoringSystem" id="scoring-fold-change" value="foldChange" checked>
+                                        Fold change
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="A percentage">
+                                        <input type="radio" name="scoringSystem" id="scoring-percentage" value="percentage">
+                                        Percentage
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="start"data-trigger="hover" data-html="true" data-content="The start position of the graph">Start position</label>
+                                <input class="form-control" type="text" id="start" name="start" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="pValue"data-trigger="hover" data-html="true" data-content="The value of Ps">P value</label>
+                                <input class="form-control" type="text" id="pValue" name="pValue" value="0.05">
+                            </div>
+                            <div class="form-group">
+                                <label for="yAxis" data-trigger="hover" data-html="true" data-content="Y indeed">Y axis dimension</label>
+                                <input class="form-control" type="text" id="yAxis" name="yAxis" value="10">
+                            </div>
+                            <div class="form-group">
+                                <label>Visualisation type</label>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                        <input type="radio" name="visualisationType" id="visualisation-iceLogo" value="iceLogo" checked>
+                                        iceLogo
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                        <input type="radio" name="visualisationType" id="visualisation-heatMap" value="heatMap">
+                                        Heat map
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                        <input type="radio" name="visualisationType" id="visualisation-sequenceLogo" value="sequenceLogo">
+                                        Sequence logo
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                        <input type="radio" name="visualisationType" id="visualisation-filledLogo" value="filledLogo">
+                                        Filled logo
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                        <input type="radio" name="visualisationType" id="visualisation-aaParameter" value="aaParameter">
+                                        AA parameter graph
+                                    </label>
+                                    <small class="pull-right hidden"><a href="#" data-toggle="modal" data-target="#aaModal">See all...</a></small>
+                                    <input class="form-control fixed-width hidden" type="text" id="aaMatrix" name="aaMatrix">
+                                </div>
+                                <div class="radio">
+                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                        <input type="radio" name="visualisationType" id="visualisation-correlationLine" value="correlationLine">
+                                        Correlation line
+                                    </label>
+                                    <small class="pull-right hidden"><a href="#" data-toggle="modal" data-target="#correlationModal">See all...</a></small>
+                                    <input class="form-control fixed-width hidden" type="text" id="substitutionMatrix" name="substitutionMatrix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label data-trigger="hover" data-html="true" data-content="Y indeed">Colors</label>
+                            <select id="preset_list" class="pull-right">
+                                <option>Presets...</option>
+                            </select>
+                            <ul id="color-list" class="list-inline">
+                                {{#aminos}}
+                                <li>
+                                    {{.}}
+                                    <select name="colors[]" class="colorselector">
+                                        {{#colors}}
+                                        <option value="{{.}}" data-color="#{{.}}"></option>
+                                        {{/colors}}
+                                    </select>
+                                </li>
+                                {{/aminos}}
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="width" data-trigger="hover" data-html="true" data-content="Y indeed">Width</label>
+                                <input class="form-control" type="text" id="width" name="width" value="800">
+                            </div>
+                            <div class="form-group">
+                                <label for="height" data-trigger="hover" data-html="true" data-content="Y indeed">Height</label>
+                                <input class="form-control" type="text" id="height" name="height" value="600">
+                            </div>
+                        </div>
+                    </div>
 
-                                    </table>
-                                </td>
-                                <td align="center" width="50%" valign="top">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="1" id="colorTable">
-                                        <tr>
-                                            <td align="center" valign="top">A:</td>
-                                            <td align="left" valign="top"><select name="ComboboxA" size="1"
-                                                                                  id="ComboboxA">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">C:</td>
-                                            <td align="left" valign="top"><select name="ComboboxC" size="1"
-                                                                                  id="ComboboxC">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option selected value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
+                    <br>
 
-                                        <tr>
-                                            <td align="center" valign="top">D:</td>
-                                            <td align="left" valign="top"><select name="ComboboxD" size="1"
-                                                                                  id="ComboboxD">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option selected value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">E:</td>
-                                            <td align="left" valign="top"><select name="ComboboxE" size="1"
-                                                                                  id="ComboboxE">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option selected value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">F:</td>
-                                            <td align="left" valign="top"><select name="ComboboxF" size="1"
-                                                                                  id="ComboboxF">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">G:</td>
-                                            <td align="left" valign="top"><select name="ComboboxG" size="1"
-                                                                                  id="ComboboxG">
-                                                <option value="black">black</option>
-                                                <option selected value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">H:</td>
-                                            <td align="left" valign="top"><select name="ComboboxH" size="1"
-                                                                                  id="ComboboxH">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option selected value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">I:</td>
-                                            <td align="left" valign="top"><select name="ComboboxI" size="1"
-                                                                                  id="ComboboxI">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">K:</td>
-                                            <td align="left" valign="top"><select name="ComboboxK" size="1"
-                                                                                  id="ComboboxK">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option selected value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">L:</td>
-                                            <td align="left" valign="top"><select name="ComboboxL" size="1"
-                                                                                  id="ComboboxL">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">M:</td>
-                                            <td align="left" valign="top"><select name="ComboboxM" size="1"
-                                                                                  id="ComboboxM">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">N:</td>
-                                            <td align="left" valign="top"><select name="ComboboxN" size="1"
-                                                                                  id="ComboboxN">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option selected value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">P:</td>
-                                            <td align="left" valign="top"><select name="ComboboxP" size="1"
-                                                                                  id="ComboboxP">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">Q:</td>
-                                            <td align="left" valign="top"><select name="ComboboxQ" size="1"
-                                                                                  id="ComboboxQ">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option selected value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">R:</td>
-                                            <td align="left" valign="top"><select name="ComboboxR" size="1"
-                                                                                  id="ComboboxR">
-                                                <option value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option selected value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">S:</td>
-                                            <td align="left" valign="top"><select name="ComboboxS" size="1"
-                                                                                  id="ComboboxS">
-                                                <option value="black">black</option>
-                                                <option selected value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">T:</td>
-                                            <td align="left" valign="top"><select name="ComboboxT" size="1"
-                                                                                  id="ComboboxT">
-                                                <option value="black">black</option>
-                                                <option selected value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">V:</td>
-                                            <td align="left" valign="top"><select name="ComboboxV" size="1"
-                                                                                  id="ComboboxV">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center" valign="top">W:</td>
-                                            <td align="left" valign="top"><select name="ComboboxW" size="1"
-                                                                                  id="ComboboxW">
-                                                <option selected value="black">black</option>
-                                                <option value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                            <td align="center" valign="top">Y:</td>
-                                            <td align="left" valign="top"><select name="ComboboxY" size="1"
-                                                                                  id="ComboboxY">
-                                                <option value="black">black</option>
-                                                <option selected value="green">green</option>
-                                                <option value="red">red</option>
-                                                <option value="blue">blue</option>
-                                                <option value="purple">purple</option>
-                                            </select></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td align="left" valign="top">Image height</td>
-                                            <td colspan="2" align="left" valign="top"><input type="text" name="height"
-                                                                                             id="height" size="5"
-                                                                                             value="600"> px
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td align="left" valign="top">Image width</td>
-                                            <td colspan="2" align="left" valign="top"><input type="text" name="width"
-                                                                                             id="width" size="5"
-                                                                                             value="800"> px
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+                    <input class="btn btn-primary btn-block btn-lg" type="submit" id="makeLogo" name="makeLogo" value="Generate">
+                </form>
+            </div>
         </div>
 
-    </form>
-    <div align="center">
-        <hr>
-        <a href="http://code.google.com/p/icelogo/">iceLogo stand alone version</a> <a
-            href="http://code.google.com/p/icelogoserver/">iceLogo server version</a> <a
-            href="http://www.computationalproteomics.com">Computational proteomics</a> <a
-            href="http://www.vib.be">VIB</a> <a href="http://www.ugent.be">University Ghent</a>
+<div class="modal fade" id="speciesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Species list</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="input-list" data-target="species">
+                    {{#species}}
+                    <li><a href="#">{{.}}</a></li>
+                    {{/species}}
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-
 </div>
-<script type="text/javascript" language="JavaScript" src="species.js"></script>
-<!-- WICK STEP 2: DEFINE COLLECTION ARRAY THAT HOLDS DATA -->
-<script type="text/javascript" language="JavaScript" src="wick.js"></script>
-<!-- WICK STEP 3: INSERT WICK LOGIC -->
-<script type="text/javascript">
-    //image src is now "another.gif"
-    document.getElementById("species").setAttribute("dataSrc", "species");
-    document.getElementById("substitutionMatrix").setAttribute("dataSrc", "substitution");
-    document.getElementById("aaMatrix").setAttribute("dataSrc", "aa");
-</script>
 
-<script type="text/javascript">
-    function checkExample() {
-        var lUrl = document.location.toString();
-        var lExampleIndex = lUrl.indexOf('example=');
-        if (lExampleIndex != -1) {
-            var lExampleNumber = lUrl.substr(lExampleIndex + 8, lExampleIndex + 9);
-            if (lExampleNumber == 1) {
-                loadExample1();
-            }
-            if (lExampleNumber == 2) {
-                loadExample2();
-            }
-            if (lExampleNumber == 3) {
-                loadExample3();
-            }
-            if (lExampleNumber == 4) {
-                loadExample4();
-            }
-            if (lExampleNumber == 5) {
-                loadExample5();
-            }
-            if (lExampleNumber == 6) {
-                loadExample6();
-            }
-        }
-    }
-</script>
+<div class="modal fade" id="aaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">AA list</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="input-list" data-target="aaMatrix">
+                    {{#aa}}
+                    <li><a href="#">{{.}}</a></li>
+                    {{/aa}}
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("UA-9963568-4");
-        pageTracker._trackPageview();
-    } catch (err) {
-    }</script>
-</body>
-</html>
+<div class="modal fade" id="correlationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Composition list</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="input-list" data-target="substitutionMatrix">
+                    {{#compositions}}
+                    <li><a href="#">{{.}}</a></li>
+                    {{/compositions}}
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{{footer}}}

@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web
-Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<!--<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web-->
+<!--Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_4.dtd">-->
 
-<web-app>
+<web-app mlns="http://java.sun.com/xml/ns/javaee" version="2.5">
   <display-name>Apache-Axis</display-name>
     
     <listener>
         <listener-class>org.apache.axis.transport.http.AxisHTTPSessionListener</listener-class>
     </listener>
+
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     
   <servlet>
     <servlet-name>AxisServlet</servlet-name>
@@ -41,13 +52,28 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
   </servlet>
 
     <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>com.computationalproteomics.icelogoserver.webapplication.Controller</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>LogoServlet</servlet-name>
         <servlet-class>com.computationalproteomics.icelogoserver.webapplication.LogoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/pages/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
         <servlet-name>LogoServlet</servlet-name>
-        <url-pattern>/LogoServlet</url-pattern>
+        <url-pattern>/logo</url-pattern>
     </servlet-mapping>
 
   <servlet-mapping>

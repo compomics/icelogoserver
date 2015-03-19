@@ -7,7 +7,7 @@
  */
 package com.computationalproteomics.icelogoserver.webapplication;
 
-import be.proteomics.logo.core.dbComposition.SwissProtComposition;
+import com.compomics.icelogo.core.dbComposition.SwissProtComposition;
 
 import java.util.Vector;
 
