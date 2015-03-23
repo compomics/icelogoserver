@@ -56,11 +56,6 @@
         <servlet-class>com.computationalproteomics.icelogoserver.webapplication.Controller</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>LogoServlet</servlet-name>
-        <servlet-class>com.computationalproteomics.icelogoserver.webapplication.LogoServlet</servlet-class>
-    </servlet>
-
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/pages/*</url-pattern>
@@ -69,11 +64,6 @@
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/create</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>LogoServlet</servlet-name>
-        <url-pattern>/logo</url-pattern>
     </servlet-mapping>
 
   <servlet-mapping>
@@ -95,6 +85,8 @@
     <servlet-name>SOAPMonitorService</servlet-name>
     <url-pattern>/SOAPMonitor</url-pattern>
   </servlet-mapping>
+
+
 
  <!-- uncomment this if you want the admin servlet -->
  <!--

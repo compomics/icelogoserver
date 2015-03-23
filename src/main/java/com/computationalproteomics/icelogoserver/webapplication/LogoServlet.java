@@ -29,12 +29,16 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.svg.SVGDocument;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 
 /**
@@ -43,6 +47,8 @@ import java.util.Vector;
  * Date: 20-okt-2008
  * Time: 16:52:43
  */
+
+@WebServlet("/data/logo")
 public class LogoServlet extends HttpServlet {
     /**
      * Boolean that indicates if a Swiss-Prot composition must be used
@@ -155,9 +161,11 @@ public class LogoServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //Load the save location if necissary
-        if(iSaveLocation == null){
-            this.loadSaveLocation();
+        File saveFolder = new File(this.getServletContext().getRealPath("/generated_images"));
+        if (!saveFolder.exists()) {
+            saveFolder.mkdirs();
         }
+        iSaveLocation = saveFolder.getAbsolutePath();
         //Delete old images from the server
         new ImageDeleter(iSaveLocation).start();
         //set the SwissProtCompositions if necissary
@@ -166,12 +174,10 @@ public class LogoServlet extends HttpServlet {
         }
         //get start position from request
         iStartPosition = Integer.valueOf(req.getParameter("start"));
-        //get x axis dimension from request
-        iYaxis = Integer.valueOf(req.getParameter("yAxis"));
         //get p value from request
         iPvalue = Double.valueOf(req.getParameter("pValue"));
         // check if we must use swissprot as a negative set or the negative sequences
-        if (req.getParameter("negSwChb").equalsIgnoreCase("use")) {
+        if (req.getParameter("reference").equalsIgnoreCase("swiss-prot")) {
             //use swissprot as negative set
             useSwissprot = true;
             iSpeciesName = req.getParameter("species");
@@ -179,7 +185,7 @@ public class LogoServlet extends HttpServlet {
         } else {
             //use the given negative sequences as a negative set
             String neg = req.getParameter("negativeSequences");
-            neg = neg.replace("\r\n","\n");
+            neg = neg.replace("\r\n", "\n");
             iNegativeSet = neg.split("\n");
             if (iNegativeSet.length == 1) {
                 iNegativeSet = neg.split("\r");
@@ -188,19 +194,20 @@ public class LogoServlet extends HttpServlet {
         }
         //get the positive sequences
         String pos = req.getParameter("positiveSequences");
-        pos = pos.replace("\r\n","\n");
+        pos = pos.replace("\r\n", "\n");
         iPositiveSet = pos.split("\n");
         if (iPositiveSet.length == 1) {
             iPositiveSet = pos.split("\r");
         }
         //check scoring type
-        if (req.getParameter("foldChange").equalsIgnoreCase("use")) {
+        if (req.getParameter("scoringSystem").equalsIgnoreCase("foldChange")) {
             iScoreType = ScoringTypeEnum.FOLDCHANGE;
         } else {
             iScoreType = ScoringTypeEnum.PERCENTAGE;
         }
 
-        iColorScheme = new ColorScheme(req.getParameterValues("colors"));
+        List<String> tempList = Arrays.stream(req.getParameterValues("colors[]")).map(e -> "0x" + e).collect(Collectors.toList());
+        iColorScheme = new ColorScheme(tempList.toArray(new String[21]));
 
         //Create model and matrixes for the logo
         RawSequenceSet lRawPositiveSequenceSet = new RawSequenceSet("Positive sequences");
@@ -209,7 +216,7 @@ public class LogoServlet extends HttpServlet {
         }
         AminoAcidStatistics[] lPositiveStatistics;
         // always use the smallest set to do the statistics
-        if (!req.getParameter("negSwChb").equalsIgnoreCase("use")) {
+        if (req.getParameter("reference").equalsIgnoreCase("reference_set")) {
             if (iPositiveSet.length < iNegativeSet.length) {
                 lPositiveStatistics = AminoAcidStatisticsFactory.createFixedStatisticsVerticalPositionAminoAcidMatrix(lRawPositiveSequenceSet, 1, 0, iPositiveSet[0].length(), iPositiveSet.length);
             } else {
@@ -393,7 +400,8 @@ public class LogoServlet extends HttpServlet {
 
     /**
      * This method will generate the SVGDocument
-     * @param req The servelt request
+     *
+     * @param req       The servelt request
      * @param dataModel The icelogo datamodel
      * @return SVGDocument
      */
@@ -403,15 +411,15 @@ public class LogoServlet extends HttpServlet {
         iInfoFeeder.setGraphableHeight(Integer.valueOf(req.getParameter("height")));
         iInfoFeeder.setGraphableWidth(Integer.valueOf(req.getParameter("width")));
         //create the SVGDocument depending on the request
-        if (req.getParameter("iceLogoType").equalsIgnoreCase("use")) {
+        if (req.getParameter("visualisationType").equalsIgnoreCase("iceLogo")) {
             IceLogoComponent logo = new IceLogoComponent(dataModel, false);
             lSVG = logo.getSVG();
-        } else if (req.getParameter("heatmapType").equalsIgnoreCase("use")) {
+        } else if (req.getParameter("visualisationType").equalsIgnoreCase("heatMap")) {
             HeatMapComponent lHeatmap = new HeatMapComponent(dataModel);
             lSVG = lHeatmap.getSVG();
-        } else if (req.getParameter("sequenceLogoType").equalsIgnoreCase("use")) {
+        } else if (req.getParameter("visualisationType").equalsIgnoreCase("filledLogo")) {
             iInfoFeeder.setFillWeblogo(false);
-            if (req.getParameter("negativeSetCorr").equalsIgnoreCase("use")) {
+            if (req.getParameter("visualisationType").equalsIgnoreCase("webLogo")) {
                 iInfoFeeder.setWeblogoNegativeCorrection(true);
             } else {
                 iInfoFeeder.setWeblogoNegativeCorrection(false);
@@ -419,8 +427,8 @@ public class LogoServlet extends HttpServlet {
             iInfoFeeder.setScoringType(ScoringTypeEnum.FREQUENCY);
             SequenceLogoComponent lSeq = new SequenceLogoComponent(dataModel);
             lSVG = lSeq.getSVG();
-        } else if (req.getParameter("aaparamType").equalsIgnoreCase("use")) {
-            String laaParam = req.getParameter("aaparamMatrix");
+        } else if (req.getParameter("visualisationType").equalsIgnoreCase("aaParameter")) {
+            String laaParam = req.getParameter("aaMatrix");
             Vector<AAIndexMatrix> lAaParamMatrices = iInfoFeeder.getAaParameterMatrixes();
             for (int i = 0; i < lAaParamMatrices.size(); i++) {
                 if (lAaParamMatrices.get(i).getTitle().equalsIgnoreCase(laaParam)) {
@@ -430,8 +438,8 @@ public class LogoServlet extends HttpServlet {
             }
             AAIndexComponent lAaParamGraph = new AAIndexComponent(dataModel);
             lSVG = lAaParamGraph.getSVG();
-        } else if (req.getParameter("corrLine").equalsIgnoreCase("use")) {
-            String lSubMatrix = req.getParameter("subMatrix");
+        } else if (req.getParameter("visualisationType").equalsIgnoreCase("correlationLine")) {
+            String lSubMatrix = req.getParameter("substitutionMatrix");
             lSubMatrix = lSubMatrix.replace("*", "'");
             Vector<AAIndexMatrix> lSubMatrices = iInfoFeeder.getSubstitutionMatrixes();
             for (int i = 0; i < lSubMatrices.size(); i++) {
@@ -449,54 +457,6 @@ public class LogoServlet extends HttpServlet {
         }
 
         return lSVG;
-    }
-
-
-    /**
-     * This method creates a ColorEnum for a specific color name
-     *
-     * @param aColor This is a String with the color name.
-     * @return ColorEnum object
-     */
-    public ColorEnum getColorFromString(String aColor) {
-        ColorEnum col = null;
-        if (aColor.equalsIgnoreCase("black")) {
-            col = ColorEnum.BLACK;
-        } else if (aColor.equalsIgnoreCase("blue")) {
-            col = ColorEnum.BLUE;
-        } else if (aColor.equalsIgnoreCase("red")) {
-            col = ColorEnum.RED;
-        } else if (aColor.equalsIgnoreCase("green")) {
-            col = ColorEnum.GREEN;
-        } else if (aColor.equalsIgnoreCase("purple")) {
-            col = ColorEnum.PURPLE;
-        }
-        return col;
-    }
-
-
-    /**
-     * This method will set the save location. This save location is given in the save.properties file that can be found on the server
-     */
-    public void loadSaveLocation() {
-        try {
-            Properties p = new Properties();
-            InputStream is = getServletContext().getResourceAsStream("/WEB-INF/save.properties");
-            if (is == null) {
-                System.out.println("No properties file found!");
-            }
-            p.load(is);
-            iSaveLocation = p.getProperty("saveLocation");
-            //check if this folder exists
-            File f =new File(iSaveLocation);
-            if(!f.isDirectory()){
-                (new File(iSaveLocation)).mkdir();
-                System.out.println("Created a new folder : " + iSaveLocation);
-            }
-        } catch (IOException e) {
-            System.err.println("Failing!");
-            e.printStackTrace();
-        }
     }
 }
 

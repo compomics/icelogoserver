@@ -9,22 +9,22 @@
                     <li><a href="#matrices">Compositions</a></li>
                     <li><a href="#visualisations">Different visualisation methods</a>
                         <ul class=" visualisation-sublist" role="tree">
-                            <li><a href="#iceLogo-visualisation-textblock">IceLogos</a></li>
-                            <li><a href="#heatmap-visualisation-textblock">Heat maps</a></li>
-                            <li><a href="#sequencelogo-visualisation-textblock">Standard sequence logos</a></li>
-                            <li><a href="#filledlogo-visualisation-textblock">Filled logos</a></li>
-                            <li><a href="#aa-param-graph-visualisation-textblock">Amino acid parameter graphs</a></li>
-                            <li><a href="#correlation-line-visualisation-textblock">Correlation line graphs</a></li>
+                            <li><a href="#icelogo">IceLogos</a></li>
+                            <li><a href="#heatmap">Heat maps</a></li>
+                            <li><a href="#sequencelogo">Standard sequence logos</a></li>
+                            <li><a href="#filledlogo">Filled logos</a></li>
+                            <li><a href="#aa-param-graph">Amino acid parameter graphs</a></li>
+                            <li><a href="#correlation-line">Correlation line graphs</a></li>
                         </ul>
                     </li>
                     <li><a href="#SOAP-container">SOAP server</a></li>
                     <li><a href="#manual-container">Elaborate manual</a></li>
-                    <li><a href="#top"> Back to top</a>
+                    <li><a href="#center-column"> Back to top</a>
                     </li>
                 </ul>
             </nav>
         </div>
-        <div class="col-md-9" role="main" id="center_column">
+        <div class="col-md-9" role="main" id="center-column">
             <h2 class="section-header">Introduction</h2>
 
             <p>
@@ -64,7 +64,7 @@
 
             <h2 id="visualisations" class="section-header">Different visualisation methods</h2>
 
-            <div id="visualisations-container" class="container">
+            <div id="visualisations-container">
                 <h3 id="general-visualisation">General information about the different visualisation methods</h3>
 
                 <p id="general-visualisation-text">
@@ -76,14 +76,12 @@
 
                 <div class="partition">
                     <ul class="pagination">
-                        <li class="active">
-                            <a href="#iceLogo-visualisation-textblock">Icelogos</a>
-                        </li>
-                        <li><a href="#heatmap-visualisation-textblock">Heat maps</a></li>
-                        <li><a href="#sequencelogo-visualisation-textblock">Sequence logos</a></li>
-                        <li><a href="#filledlogo-visualisation-textblock">Filled logos</a></li>
-                        <li><a href="#aa-param-graph-visualisation-textblock">Amino acid parameter graphs</a></li>
-                        <li><a href="#correlation-line-visualisation-textblock">Correlation lines</a></li>
+                        <li id="icelogo" class="active"><a href="#iceLogo-visualisation-textblock">Icelogos</a></li>
+                        <li id="heatmap"><a href="#heatmap-visualisation-textblock">Heat maps</a></li>
+                        <li id="sequencelogo"><a href="#sequencelogo-visualisation-textblock">Sequence logos</a></li>
+                        <li id="filledlogo"><a href="#filledlogo-visualisation-textblock">Filled logos</a></li>
+                        <li id="aa-param-graph"><a href="#aa-param-graph-visualisation-textblock">Amino acid parameter graphs</a></li>
+                        <li id="correlation-line"><a href="#correlation-line-visualisation-textblock">Correlation lines</a></li>
                     </ul>
                     <div class="textblock" id="iceLogo-visualisation-textblock">
                         <h3 id="iceLogo-visualisation">IceLogos</h3>
@@ -265,7 +263,7 @@
             </div>
 
 
-            <div id="SOAP-container" class="container">
+            <div id="SOAP-container">
                 <h2 class="section-header">The SOAP service</h2>
 
                 <h3>What is SOAP?</h3>
@@ -287,7 +285,7 @@
             </div>
 
 
-            <div id="elaborate-manual" class="container">
+            <div id="elaborate-manual">
 
                 <h2 class="section-header">Elaborate manual</h2>
                 For more insights on the different visualization methods and statistics, download the pdf manual

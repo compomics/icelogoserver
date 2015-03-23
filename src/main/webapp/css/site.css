@@ -89,14 +89,11 @@ body {
     position: relative;
 }
 
-.partition {
+.textblock {
     background-color: #fff;
-    border-radius: 4px 4px 0 0;
+    border-radius: 0;
     box-sizing: border-box;
     position: relative;
-    padding: 10px 10px 10px 15px;
-    margin: 0 -15px 15px;
-    border-color: #e5e5e5 #eee #eee;
-    border-style: solid;
-    box-shadow: #979797;
+    padding: 10px;
+    border: thin solid #acadad;
 }

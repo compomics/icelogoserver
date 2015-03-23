@@ -3,11 +3,11 @@
             <div class="row">
                 <img src="images/white.gif" alt="Logo image" id="logo-image" class="hidden">
 
-                <form id="logoForm" method="post" action="/logo">
+                <form id="logoForm" method="post" action="/data/logo">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="positiveSequences" data-toggle="popover" data-trigger="hover" data-html="true" data-content="The experimental set">Experimental set</label>
+                                <label for="positiveSequences" data-toggle="popover" data-trigger="hover" data-html="true" data-content="the multiple sequence alignment to use for image generation">Experimental set</label>
                                 <textarea name="positiveSequences" id="positiveSequences" class="form-control" rows="10"></textarea>
                             </div>
 
@@ -17,13 +17,13 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="reference" id="reference-set" value="reference_set" checked>
-                                        Use reference set
+                                        Use user submitted reference set
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="reference" id="reference-swiss-prot" value="swiss-prot">
-                                        Use Swiss-Prot composition
+                                        Use precompiled Swiss-Prot composition
                                     </label>
                                 </div>
                             </div>
@@ -39,60 +39,56 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label data-trigger="hover" data-html="true" data-content="The scoring system">Scoring system</label>
+                                <label data-trigger="hover" data-html="true" data-content="calculation method to use">Scoring system</label>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="A change of fold">
+                                    <label data-trigger="hover" data-html="true" data-content="calculates variability between the different elements">
                                         <input type="radio" name="scoringSystem" id="scoring-fold-change" value="foldChange" checked>
                                         Fold change
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="A percentage">
+                                    <label data-trigger="hover" data-html="true" data-content="percent difference in frequency of the amino acids in a location">
                                         <input type="radio" name="scoringSystem" id="scoring-percentage" value="percentage">
                                         Percentage
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="start"data-trigger="hover" data-html="true" data-content="The start position of the graph">Start position</label>
+                                <label for="start"data-trigger="hover" data-html="true" data-content="the first amino acid to take into account of the M.S.A">Start position</label>
                                 <input class="form-control" type="text" id="start" name="start" value="0">
                             </div>
                             <div class="form-group">
-                                <label for="pValue"data-trigger="hover" data-html="true" data-content="The value of Ps">P value</label>
+                                <label for="pValue"data-trigger="hover" data-html="true" data-content="the certainty to employ during calculations">P value</label>
                                 <input class="form-control" type="text" id="pValue" name="pValue" value="0.05">
-                            </div>
-                            <div class="form-group">
-                                <label for="yAxis" data-trigger="hover" data-html="true" data-content="Y indeed">Y axis dimension</label>
-                                <input class="form-control" type="text" id="yAxis" name="yAxis" value="10">
                             </div>
                             <div class="form-group">
                                 <label>Visualisation type</label>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                    <label data-trigger="hover" data-html="true" data-content="the standard iceLogo visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-iceLogo" value="iceLogo" checked>
                                         iceLogo
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                    <label data-trigger="hover" data-html="true" data-content="heat map visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-heatMap" value="heatMap">
                                         Heat map
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                    <label data-trigger="hover" data-html="true" data-content="the classical sequence logo visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-sequenceLogo" value="sequenceLogo">
                                         Sequence logo
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                    <label data-trigger="hover" data-html="true" data-content="the filled sequence logo visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-filledLogo" value="filledLogo">
                                         Filled logo
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                    <label data-trigger="hover" data-html="true" data-content="visualisation of an amino acid parameter">
                                         <input type="radio" name="visualisationType" id="visualisation-aaParameter" value="aaParameter">
                                         AA parameter graph
                                     </label>
@@ -100,7 +96,7 @@
                                     <input class="form-control fixed-width hidden" type="text" id="aaMatrix" name="aaMatrix">
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="The experimental set">
+                                    <label data-trigger="hover" data-html="true" data-content="visualisation of a correlation with a substitution matrix">
                                         <input type="radio" name="visualisationType" id="visualisation-correlationLine" value="correlationLine">
                                         Correlation line
                                     </label>
@@ -113,9 +109,11 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label data-trigger="hover" data-html="true" data-content="Y indeed">Colors</label>
+                            <label data-trigger="hover" data-html="true" data-content="the colors of each amino acid on the plot">Colors</label>
                             <select id="preset_list" class="pull-right">
-                                <option>Presets...</option>
+                                {{#presets}}
+                                    <option value="{{.}}">{{.}}</option>
+                                {{/presets}}
                             </select>
                             <ul id="color-list" class="list-inline">
                                 {{#aminos}}
@@ -132,11 +130,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="width" data-trigger="hover" data-html="true" data-content="Y indeed">Width</label>
+                                <label for="width" data-trigger="hover" data-html="true" data-content="pixel width of the generated image">Width</label>
                                 <input class="form-control" type="text" id="width" name="width" value="800">
                             </div>
                             <div class="form-group">
-                                <label for="height" data-trigger="hover" data-html="true" data-content="Y indeed">Height</label>
+                                <label for="height" data-trigger="hover" data-html="true" data-content="pixel height of the generated image">Height</label>
                                 <input class="form-control" type="text" id="height" name="height" value="600">
                             </div>
                         </div>

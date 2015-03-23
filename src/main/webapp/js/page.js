@@ -102,7 +102,7 @@ function loadExample(index) {
 
     $('#visualisation-' + examples[index].radio.visualisation).trigger('change');
 
-    $('#logo-image').prop('src', 'images/logo/example' + index + '.jpeg');
+    $('#logo-image').prop('src', '/images/logo/example' + index + '.jpeg');
 }
 
 function checkExample() {
@@ -155,13 +155,6 @@ function validateForm() {
         alert('Please specify a valid species from the list');
         return false;
     } else if (reference == 'reference_set' && !checkSequences($('#negativeSequences').val(), 'reference')) {
-        return false;
-    }
-
-    var yAxis = $('#yAxis').val();
-
-    if (!$.isNumeric(yAxis) || yAxis == 0) {
-        alert('Y axis value must be a positive number');
         return false;
     }
 
@@ -262,12 +255,26 @@ $(function() {
         if (validateForm()) {
             var $this = $(this);
 
-            $.post($this.attr('action'), $this.serialize(), function(response) {
-                $('#logoImg').attr('src', 'images/logo/' + response + '.jpeg')
+            //$.post($this.attr('action'), $this.serialize(), function(response) {
+            //    $('#logoImg').attr('src', '/generated_images/' + response + '.jpeg')
+            //        .data('current', response);
+            //}).fail(function(response) {
+            //    alert('An error occurred communicating with the server. Please try again.')
+            //});
+
+            $.ajax({
+                url: $this.attr('action'),
+                data: $this.serialize(),
+                dataType: 'text',
+                timeout: 5000,
+                method:'POST'
+            }).done(function(response){
+                $('#logoImg').attr('src', '/generated_images/' + response + '.jpeg')
                     .data('current', response);
             }).fail(function(response) {
                 alert('An error occurred communicating with the server. Please try again.')
             });
+
         }
 
         return false;
@@ -276,12 +283,17 @@ $(function() {
     $('#preset_list').change(function() {
         var $this = $(this);
 
-        $.post('/colors', {preset: $this.val()}, function(response) {
+        $.post('/data/colors', {preset: $this.val()}, function(response) {
             var $pickers = $('.colorselector');
 
-            $.each(response, function(k, v) {
-                $pickers.get(k).colorselector('setColor', v);
+            var i = 0;
+            var splittedResponse = response.split(",");
+            $pickers.each(function(){
+
+                $(this).colorselector('setColor',splittedResponse[i]);
+                i++;
             });
+
         });
     });
 
@@ -293,9 +305,8 @@ $(function() {
         }
     });
 
-    //todo replace this with proper call and remove redundant code
 
-    $('body').on('click', '.pagination li a', function () {
+    $('.pagination').on('click', 'li a', function () {
 
         $('.textblock').hide();
         $('.pagination li').removeClass('active');
@@ -306,11 +317,7 @@ $(function() {
 
     $('body').on('click', '.visualisation-sublist li a', function () {
 
-        $('.textblock').hide();
-        $('.pagination li').removeClass('active');
-        $(this.parentNode).addClass('active');
-        $($(this).attr('href')).show();
-        return this;
+        $($(this).attr("href") + " a").trigger("click");
     });
 
     checkExample();
