@@ -102,7 +102,7 @@ function loadExample(index) {
 
     $('#visualisation-' + examples[index].radio.visualisation).trigger('change');
 
-    $('#logo-image').prop('src', '/images/logo/example' + index + '.jpeg');
+    $('#logoImage').prop('src', '/images/logo/example' + index + '.jpeg').removeClass('hidden');
 }
 
 function checkExample() {
@@ -255,13 +255,6 @@ $(function() {
         if (validateForm()) {
             var $this = $(this);
 
-            //$.post($this.attr('action'), $this.serialize(), function(response) {
-            //    $('#logoImg').attr('src', '/generated_images/' + response + '.jpeg')
-            //        .data('current', response);
-            //}).fail(function(response) {
-            //    alert('An error occurred communicating with the server. Please try again.')
-            //});
-
             $.ajax({
                 url: $this.attr('action'),
                 data: $this.serialize(),
@@ -269,8 +262,9 @@ $(function() {
                 timeout: 5000,
                 method:'POST'
             }).done(function(response){
-                $('#logoImg').attr('src', '/generated_images/' + response + '.jpeg')
-                    .data('current', response);
+                $('#logoImage').attr('src', '/generated_images/' + response + '.jpeg')
+                    .data('current', response)
+                    .removeClass('hidden');
             }).fail(function(response) {
                 alert('An error occurred communicating with the server. Please try again.')
             });
