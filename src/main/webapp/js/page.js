@@ -309,10 +309,11 @@ $(function() {
         return false;
     });
 
-    $('body').on('click', '.visualisation-sublist li a', function () {
-
+    $('.visualisation-sublist').on('click', 'li a', function () {
         $($(this).attr("href") + " a").trigger("click");
     });
 
     checkExample();
+
+    $('#preset_list').val('Standard').trigger('change');
 });

@@ -1,6 +1,5 @@
 package com.computationalproteomics.icelogoserver.webapplication;
 
-import com.compomics.icelogo.core.enumeration.ColorScheme;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
