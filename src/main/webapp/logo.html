@@ -1,13 +1,26 @@
 {{{header}}}
-        <div class="container">
+        <div class="container" id="contentContainer">
             <div class="row">
+                <div class="dropdown pull-right hidden" id="saveDropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        Save as...
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="saveAs">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-extension=".jpeg">JPEG file</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-extension=".png">PNG file</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-extension=".pdf">PDF file</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-extension=".svg">SVG file</a></li>
+                    </ul>
+                </div>
+
                 <img src="/images/white.gif" alt="Logo image" id="logoImage" class="hidden">
 
                 <form id="logoForm" method="post" action="/data/logo">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="positiveSequences" data-toggle="popover" data-trigger="hover" data-html="true" data-content="the multiple sequence alignment to use for image generation">Experimental set</label>
+                                <label for="positiveSequences" data-toggle="popover" data-trigger="hover" data-html="true" data-content="The multiple sequence alignment to use for image generation">Experimental set</label>
                                 <textarea name="positiveSequences" id="positiveSequences" class="form-control" rows="10"></textarea>
                             </div>
 
@@ -28,67 +41,87 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="negativeSequences" data-trigger="hover" data-html="true" data-content="The reference set">Reference set</label>
+                                <label for="negativeSequences" data-trigger="hover" data-html="true" data-content="User-provided reference set">Reference set</label>
                                 <textarea name="negativeSequences" id="negativeSequences" class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="species" data-trigger="hover" data-html="true" data-content="The species">Swiss-Prot composition</label>
+                                <label for="species" data-trigger="hover" data-html="true" data-content="Start typing to search the list, or click 'see all' to browse">Swiss-Prot composition</label>
                                 <small class="pull-right"><a href="#" data-toggle="modal" data-target="#speciesModal">See all...</a></small>
                                 <input class="form-control" type="text" id="species" name="species" size="50">
+                            </div>
+                            <div class="form-group">
+                                <label data-trigger="hover" data-html="true" data-content="The colors of each amino acid on the plot">Colors</label>
+                                <select id="preset_list" class="pull-right">
+                                    {{#presets}}
+                                    <option value="{{.}}">{{.}}</option>
+                                    {{/presets}}
+                                </select>
+                                <ul id="color-list" class="list-inline">
+                                    {{#aminos}}
+                                    <li>
+                                        {{.}}
+                                        <select name="colors[]" class="colorselector">
+                                            {{#colors}}
+                                            <option value="{{.}}" data-color="#{{.}}"></option>
+                                            {{/colors}}
+                                        </select>
+                                    </li>
+                                    {{/aminos}}
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label data-trigger="hover" data-html="true" data-content="calculation method to use">Scoring system</label>
+                                <label data-trigger="hover" data-html="true" data-content="Calculation method to use">Scoring system</label>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="calculates variability between the different elements">
+                                    <label data-trigger="hover" data-html="true" data-content="Calculates variability between the different elements">
                                         <input type="radio" name="scoringSystem" id="scoring-fold-change" value="foldChange" checked>
                                         Fold change
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="percent difference in frequency of the amino acids in a location">
+                                    <label data-trigger="hover" data-html="true" data-content="Percent difference in frequency of the amino acids at a location">
                                         <input type="radio" name="scoringSystem" id="scoring-percentage" value="percentage">
                                         Percentage
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="start"data-trigger="hover" data-html="true" data-content="the first amino acid to take into account of the M.S.A">Start position</label>
+                                <label for="start"data-trigger="hover" data-html="true" data-content="First amino acid to take into account of the MSA">Start position</label>
                                 <input class="form-control" type="text" id="start" name="start" value="0">
                             </div>
                             <div class="form-group">
-                                <label for="pValue"data-trigger="hover" data-html="true" data-content="the certainty to employ during calculations">P value</label>
+                                <label for="pValue"data-trigger="hover" data-html="true" data-content="Certainty to employ during calculations">P value</label>
                                 <input class="form-control" type="text" id="pValue" name="pValue" value="0.05">
                             </div>
                             <div class="form-group">
                                 <label>Visualisation type</label>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="the standard iceLogo visualisation">
+                                    <label data-trigger="hover" data-html="true" data-content="Standard iceLogo visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-iceLogo" value="iceLogo" checked>
                                         iceLogo
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="heat map visualisation">
+                                    <label data-trigger="hover" data-html="true" data-content="Heat map visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-heatMap" value="heatMap">
                                         Heat map
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="the classical sequence logo visualisation">
+                                    <label data-trigger="hover" data-html="true" data-content="Classical sequence logo visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-sequenceLogo" value="sequenceLogo">
                                         Sequence logo
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="the filled sequence logo visualisation">
+                                    <label data-trigger="hover" data-html="true" data-content="Filled sequence logo visualisation">
                                         <input type="radio" name="visualisationType" id="visualisation-filledLogo" value="filledLogo">
                                         Filled logo
                                     </label>
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="visualisation of an amino acid parameter">
+                                    <label data-trigger="hover" data-html="true" data-content="Visualisation of an amino acid parameter (search parameters using the field below or click 'see all' to browse)">
                                         <input type="radio" name="visualisationType" id="visualisation-aaParameter" value="aaParameter">
                                         AA parameter graph
                                     </label>
@@ -96,7 +129,7 @@
                                     <input class="form-control fixed-width hidden" type="text" id="aaMatrix" name="aaMatrix">
                                 </div>
                                 <div class="radio">
-                                    <label data-trigger="hover" data-html="true" data-content="visualisation of a correlation with a substitution matrix">
+                                    <label data-trigger="hover" data-html="true" data-content="Visualisation of a correlation with a substitution matrix (search matrices using the field below or click 'see all' to browse)">
                                         <input type="radio" name="visualisationType" id="visualisation-correlationLine" value="correlationLine">
                                         Correlation line
                                     </label>
@@ -104,37 +137,12 @@
                                     <input class="form-control fixed-width hidden" type="text" id="substitutionMatrix" name="substitutionMatrix">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label data-trigger="hover" data-html="true" data-content="the colors of each amino acid on the plot">Colors</label>
-                            <select id="preset_list" class="pull-right">
-                                {{#presets}}
-                                    <option value="{{.}}">{{.}}</option>
-                                {{/presets}}
-                            </select>
-                            <ul id="color-list" class="list-inline">
-                                {{#aminos}}
-                                <li>
-                                    {{.}}
-                                    <select name="colors[]" class="colorselector">
-                                        {{#colors}}
-                                        <option value="{{.}}" data-color="#{{.}}"></option>
-                                        {{/colors}}
-                                    </select>
-                                </li>
-                                {{/aminos}}
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="width" data-trigger="hover" data-html="true" data-content="pixel width of the generated image">Width</label>
+                                <label for="width" data-trigger="hover" data-html="true" data-content="Width in pixels of the generated image">Width</label>
                                 <input class="form-control" type="text" id="width" name="width" value="800">
                             </div>
                             <div class="form-group">
-                                <label for="height" data-trigger="hover" data-html="true" data-content="pixel height of the generated image">Height</label>
+                                <label for="height" data-trigger="hover" data-html="true" data-content="Height in pixels of the generated image">Height</label>
                                 <input class="form-control" type="text" id="height" name="height" value="600">
                             </div>
                         </div>
@@ -142,7 +150,7 @@
 
                     <br>
 
-                    <input class="btn btn-primary btn-block btn-lg" type="submit" id="makeLogo" name="makeLogo" value="Generate">
+                    <button class="btn btn-primary btn-block btn-lg" id="makeLogo" name="makeLogo">Generate</button>
                 </form>
             </div>
         </div>
@@ -152,7 +160,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Species list</h4>
+                <h4 class="modal-title">Swiss Prot species list &nbsp; <small>(click to insert)</small></h4>
             </div>
             <div class="modal-body">
                 <ul class="input-list" data-target="species">
@@ -173,7 +181,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">AA list</h4>
+                <h4 class="modal-title">Amino acid list &nbsp; <small>(click to insert)</small></h4>
             </div>
             <div class="modal-body">
                 <ul class="input-list" data-target="aaMatrix">
@@ -194,7 +202,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Composition list</h4>
+                <h4 class="modal-title">Composition list &nbsp; <small>(click to insert)</small></h4>
             </div>
             <div class="modal-body">
                 <ul class="input-list" data-target="substitutionMatrix">

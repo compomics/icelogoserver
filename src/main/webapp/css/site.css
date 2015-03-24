@@ -16,7 +16,7 @@ h2, h4 {
 textarea {
     font-family: Consolas, Lucida Console, monospace;
 }
-#logo-image {
+#logoImage {
     width: 100%;
 }
 .tt-dropdown-menu {
@@ -43,6 +43,9 @@ textarea {
 }
 .section-header {
     color: #0066CC;
+}
+#saveDropdown {
+    margin-bottom: -34px;
 }
 pre {
     margin-bottom: 10px;

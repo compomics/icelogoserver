@@ -91,7 +91,7 @@ var bloodhoundSub = new Bloodhound({
     local: $.map(my_data.substitution, function(species) { return {value: species}; })
 });
 
-function loadExample(index) {
+function loadExample(index, showImage) {
     $.each($.extend(examples['base'].values, examples[index].values), function(id, value) {
         $('#' + id).val(value);
     });
@@ -102,7 +102,10 @@ function loadExample(index) {
 
     $('#visualisation-' + examples[index].radio.visualisation).trigger('change');
 
-    $('#logoImage').prop('src', '/images/logo/example' + index + '.jpeg').removeClass('hidden');
+    if (showImage) {
+        $('#logoImage').prop('src', '/images/logo/example' + index + '.jpeg').removeClass('hidden');
+        window.scrollTo(0, 200);
+    }
 }
 
 function checkExample() {
@@ -110,7 +113,7 @@ function checkExample() {
     var lExampleIndex = lUrl.indexOf('example=');
 
     if (lExampleIndex != -1) {
-        loadExample(lUrl.substr(lExampleIndex + 8, lExampleIndex + 9));
+        loadExample(lUrl.substr(lExampleIndex + 8, lExampleIndex + 9), true);
     }
 }
 
@@ -190,7 +193,7 @@ function validateForm() {
 
 $(function() {
     $('#load_sample_data').click(function () {
-        loadExample(1);
+        loadExample(1, false);
         return false;
     });
 
@@ -253,6 +256,8 @@ $(function() {
 
     $('#logoForm').submit(function() {
         if (validateForm()) {
+            $('#makeLogo').attr('disabled', true).html('<img src="/images/ajax-loader.gif">');
+
             var $this = $(this);
 
             $.ajax({
@@ -265,8 +270,15 @@ $(function() {
                 $('#logoImage').attr('src', '/generated_images/' + response + '.jpeg')
                     .data('current', response)
                     .removeClass('hidden');
+
+                $('#saveDropdown').removeClass('hidden');
+
+                window.scrollTo(0, 200);
+
+                $('#makeLogo').attr('disabled', false).html('Generate');
             }).fail(function(response) {
-                alert('An error occurred communicating with the server. Please try again.')
+                alert('An error occurred communicating with the server. Please try again.');
+                $('#makeLogo').attr('disabled', false).html('Generate');
             });
 
         }
@@ -311,6 +323,14 @@ $(function() {
 
     $('.visualisation-sublist').on('click', 'li a', function () {
         $($(this).attr("href") + " a").trigger("click");
+    });
+
+    $('#saveAs li a').click(function() {
+        var url = '/generated_images/' + $('#logoImage').data('current') + $(this).data('extension');
+
+        window.open(url, '_blank');
+
+        return false;
     });
 
     checkExample();
