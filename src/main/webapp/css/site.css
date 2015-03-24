@@ -64,32 +64,7 @@ body {
 }
 
 #sidebar nav {
-    position: fixed;
-    float: left;
-}
-
-#heatmap-visualisation-textblock {
-    display: none
-}
-
-#sequencelogo-visualisation-textblock {
-    display: none
-}
-
-#filledlogo-visualisation-textblock {
-    display: none
-}
-
-#aa-param-graph-visualisation-textblock {
-    display: none
-}
-
-#correlation-line-visualisation-textblock {
-    display: none
-}
-
-#sidebar {
-    position: relative;
+    margin-top: 15px;
 }
 
 .textblock {
@@ -97,6 +72,6 @@ body {
     border-radius: 0;
     box-sizing: border-box;
     position: relative;
-    padding: 10px;
+    padding: 0 25px 20px;
     border: thin solid #acadad;
 }

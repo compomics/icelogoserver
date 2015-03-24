@@ -303,25 +303,15 @@ $(function() {
         });
     });
 
-    $('#sidebar').affix({
-        offset: {
-            bottom: function () {
-                return (this.bottom = $('body').height())
-            }
-        }
-    });
-
-
-    $('.pagination').on('click', 'li a', function () {
-
-        $('.textblock').hide();
+    $('.pagination').on('click', 'li a', function() {
+        $('.textblock').addClass('hidden');
         $('.pagination li').removeClass('active');
         $(this.parentNode).addClass('active');
-        $($(this).attr('href')).show();
+        $($(this).attr('href')).removeClass('hidden');
         return false;
     });
 
-    $('.visualisation-sublist').on('click', 'li a', function () {
+    $('.visualisation-sublist').on('click', 'li a', function() {
         $($(this).attr("href") + " a").trigger("click");
     });
 
