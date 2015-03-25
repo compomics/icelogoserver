@@ -160,15 +160,15 @@ public class LogoServlet extends HttpServlet {
      * @throws IOException
      */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        //Load the save location if necissary
-        File saveFolder = new File(this.getServletContext().getRealPath("/generated_images"));
+        //Load the save location if necessary
+        File saveFolder = new File(this.getRootLocation() + "/generated_images");
         if (!saveFolder.exists()) {
             saveFolder.mkdirs();
         }
         iSaveLocation = saveFolder.getAbsolutePath();
         //Delete old images from the server
         new ImageDeleter(iSaveLocation).start();
-        //set the SwissProtCompositions if necissary
+        //set the SwissProtCompositions if necessary
         if (!iWiceLogoSingelton.speciesSet()) {
             this.loadCompositions();
         }
@@ -183,22 +183,28 @@ public class LogoServlet extends HttpServlet {
             iSpeciesName = req.getParameter("species");
 
         } else {
-            //use the given negative sequences as a negative set
+            //use the given negative sequences as a negative set and remove any fasta headers and empty lines
             String neg = req.getParameter("negativeSequences");
             neg = neg.replace("\r\n", "\n");
             iNegativeSet = neg.split("\n");
             if (iNegativeSet.length == 1) {
                 iNegativeSet = neg.split("\r");
             }
+            Arrays.stream(iNegativeSet).filter(e -> e.startsWith(">") || e.isEmpty()).collect(Collectors.toList()).toArray(iNegativeSet);
+
             useSwissprot = false;
         }
-        //get the positive sequences
+
+        //get the positive sequences and remove any fasta headers and empty lines
         String pos = req.getParameter("positiveSequences");
         pos = pos.replace("\r\n", "\n");
         iPositiveSet = pos.split("\n");
         if (iPositiveSet.length == 1) {
             iPositiveSet = pos.split("\r");
         }
+        Arrays.stream(iPositiveSet).filter(e -> e.startsWith(">") || e.isEmpty()).collect(Collectors.toList()).toArray(iPositiveSet);
+
+
         //check scoring type
         if (req.getParameter("scoringSystem").equalsIgnoreCase("foldChange")) {
             iScoreType = ScoringTypeEnum.FOLDCHANGE;
@@ -207,6 +213,7 @@ public class LogoServlet extends HttpServlet {
         }
 
         List<String> tempList = Arrays.stream(req.getParameterValues("colors[]")).map(e -> "0x" + e).collect(Collectors.toList());
+
         iColorScheme = new ColorScheme(tempList.toArray(new String[21]));
 
         //Create model and matrixes for the logo
@@ -457,6 +464,10 @@ public class LogoServlet extends HttpServlet {
         }
 
         return lSVG;
+    }
+
+    public String getRootLocation() {
+        return getServletContext().getRealPath("/");
     }
 }
 

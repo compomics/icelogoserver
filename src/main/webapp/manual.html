@@ -46,252 +46,299 @@
 
             <h2 id="msa" class="section-header">Multiple sequence alignment</h2>
 
-            <p id="msa-text">
-                For the multiple sequence alignments, a couple of input formats are accepted
-            </p>
+            <div id="msa-text">
+                <p>
+                    The provided multiple sequence alignment can contain the 20 classic amino acids, an X to denote an
+                    unknown or a dash (-) to denote a gap at that location
+                    This multiple sequence alignment has to be the raw alignment, extra information will cause a
+                    failure.
+                    Many programs such as clustalW and muscle
+                    offer this option. Fasta format is accepted though headers will be discarded and not taken into
+                    account
+                    in any way while generating logos.
+                </p>
 
+                <p>
 
-            <h2 class="section-header" id="referenceset">Reference set</h2>
-
-            <p id="referenceset-text">
-                The reference set can come in two flavours, a predetermined variation of amino acids compiled from
-                uniprot fasta files, or a variation compiled from a provided fasta.
-                The website offers a comprehensive list of species that have a pre-compiled amino acid frequency reference
-                set to be used as background
-
-            </p>
-
-
-            <h2 id="visualisations" class="section-header">Different visualisation methods</h2>
-
-            <div id="visualisations-container">
-                <h3 id="general-visualisation">General information about the different visualisation methods</h3>
-
-                <p id="general-visualisation-text">
-                    Icelogo offers different visualisation methods. When using the website to generate images, the
-                    colours of the amino acids can be changed to fit the required view. This is impossible with the SOAP
-                    service, where a significantly regulated amino acid is always coloured pink.
+                    While there is a limit to how many characters can be shown on one line in the the positive and
+                    negative
+                    set text boxes, iceLogo considers every new line (control character new lines such as \n) to be a
+                    single sequence.
+                    Empty lines will be discarded.
 
                 </p>
 
-                <div class="partition">
-                    <ul class="pagination">
-                        <li id="icelogo" class="active"><a href="#iceLogo-visualisation-textblock">Icelogos</a></li>
-                        <li id="heatmap"><a href="#heatmap-visualisation-textblock">Heat maps</a></li>
-                        <li id="sequencelogo"><a href="#sequencelogo-visualisation-textblock">Sequence logos</a></li>
-                        <li id="filledlogo"><a href="#filledlogo-visualisation-textblock">Filled logos</a></li>
-                        <li id="aa-param-graph"><a href="#aa-param-graph-visualisation-textblock">Amino acid parameter graphs</a></li>
-                        <li id="correlation-line"><a href="#correlation-line-visualisation-textblock">Correlation lines</a></li>
-                    </ul>
-                    <div class="textblock" id="iceLogo-visualisation-textblock">
-                        <h3 id="iceLogo-visualisation">IceLogos</h3>
 
-                        <p>
-                            While an iceLogo has a lot in common with sequence logos, especially visually, it has a
-                            couple of advantages.
-                            It wil always use a reference set, and it allows for changing the scoring system used.
-                        </p>
+                <h2 class="section-header" id="referenceset">Reference set</h2>
 
-                        <h4 class="lead">Reference sets</h4>
+                <p id="referenceset-text">
+                    The reference set can come in two flavours, a predetermined variation of amino acids compiled from
+                    uniprot fasta files, or a variation compiled from a provided fasta.
+                    The website offers a comprehensive list of species that have a pre-compiled amino acid frequency
+                    reference set to be used as background.
 
-                        <p>
-                            for more information about the different reference sets, please see the <a
-                                href="#referenceset">dedicated section.</a>
-                        </p>
+                    The same rule is used here as with the multiple sequence alignment, only when a new line is present,
+                    will the lines of aminoacids be considered a complete sequence and empty lines will be discarded.
 
-                        <h4 class="lead">different scoring methods</h4>
+                </p>
 
-                        <b>Percentage difference</b>
 
-                        <p>This is the default scoring method. This compares the frequency percentage of an amino acid
-                            at a certain location in the multiple sequence alignment and the reference set.
-                            iceLogo uses the results of these difference between observed and reference set comparisons
-                            of each amino acid to create the requested logos </p>
+                <h2 id="visualisations" class="section-header">Different visualisation methods</h2>
 
-                        <b>Fold change</b>
+                <div id="visualisations-container">
+                    <h3 id="general-visualisation">General information about the different visualisation methods</h3>
 
-                        <p>
-                            Primarily aimed at finding regulation of low abundance amino acids, the fold change is a
-                            measure of the variability between a beginning and a final element.
-                            Concrete for iceLogo this means that the changes across the sequence are emphasized and not
-                            the values of each element. The values used are these fold changes that are observed.
-                            fold change in the down regulated sense are translated to their negative component (for
-                            example a fold change of 0.5 indicates it is twice as down regulated, which translates to
-                            -2). This helps to remove systematic errors that might be present. Please keep in mind that
-                            having large differences but small ratios between the elements leads to a high miss rate
+                    <p id="general-visualisation-text">
+                        Icelogo offers different visualisation methods. When using the website to generate images, the
+                        colours of the amino acids can be changed to fit the required view. This is impossible with the
+                        SOAP
+                        service, where a significantly regulated amino acid is always coloured pink.
 
-                        </p>
+                    </p>
 
-                        <h4 class="lead">Additional colouring rules</h4>
-
-                        <p>
-
-                            When using the SOAP server to create iceLogos, there are some specific rules when using the
-                            fold change.
-                            Because a fold change can become infinite, we default back to a certain height.
-                        <ul>
-                            <li>
-                                When only one amino acid is regulated, the height will the maximum height possible in
-                                the
-                                iceLogo.
+                    <div class="partition">
+                        <ul class="pagination">
+                            <li id="icelogo" class="active"><a href="#iceLogo-visualisation-textblock">Icelogos</a></li>
+                            <li id="heatmap"><a href="#heatmap-visualisation-textblock">Heat maps</a></li>
+                            <li id="sequencelogo"><a href="#sequencelogo-visualisation-textblock">Sequence logos</a>
                             </li>
-                            <li>
-                                When multiple amino acids are regulated, and every amino acid sizes are infinite, the
-                                height
-                                of the amino acids will be the maximul height divided by the number of regulated amino
-                                acids
-                                on the position.
-                            </li>
-                            <li>
-                                When multiple amino acids are regulated, and some amino acid sizes are infinite, the
-                                height
-                                of the infinite amino acids will be 10% larger than the largest non infinite amino acid
-                            </li>
+                            <li id="filledlogo"><a href="#filledlogo-visualisation-textblock">Filled logos</a></li>
+                            <li id="aa-param-graph"><a href="#aa-param-graph-visualisation-textblock">Amino acid
+                                parameter
+                                graphs</a></li>
+                            <li id="correlation-line"><a href="#correlation-line-visualisation-textblock">Correlation
+                                lines</a></li>
                         </ul>
-                        </p>
+                        <div class="textblock" id="iceLogo-visualisation-textblock">
+                            <h3 id="iceLogo-visualisation">IceLogos</h3>
 
-                        <h4>examples</h4>
+                            <p>
+                                While an iceLogo has a lot in common with sequence logos, especially visually, it has a
+                                couple of advantages.
+                                It wil always use a reference set, and it allows for changing the scoring system used.
+                            </p>
 
-                        <a href="logo.html?example=1">example set with percentage difference</a>
-                        <br>
-                        <a href="logo.html?example7">example set with fold change</a>
+                            <h4 class="lead">Reference sets</h4>
 
-                    </div>
+                            <p>
+                                for more information about the different reference sets, please see the <a
+                                    href="#referenceset">dedicated section.</a>
+                            </p>
 
-                    <div class="textblock" id="heatmap-visualisation-textblock">
-                        <h3 id="heatmap-visualisation">heat maps</h3>
+                            <h4 class="lead">different scoring methods</h4>
 
-                        <p>
-                            A heat map is commonly used to create an overview of all possibilities in a 2D space
-                            compared to a central point.
-                            The implementation of heat maps in iceLogo puts the amino acids on the rows and the
-                            positions on the columns.
-                        </p>
+                            <b>Percentage difference</b>
 
-                        <p>
-                            for more information on how the scoring works for determining the heat of each data point,
-                            please refer to the <a href="manual.pdf">manual pdf section on heat maps</a>
-                        </p>
+                            <p>This is the default scoring method. This compares the frequency percentage of an amino
+                                acid
+                                at a certain location in the multiple sequence alignment and the reference set.
+                                iceLogo uses the results of this difference between observed and reference set
+                                comparisons
+                                of each amino acid to create the requested logos </p>
 
-                        <h4 class="lead">colouring rules</h4>
+                            <b>Fold change</b>
 
-                        <p>
-                            Heat maps in iceLogo use the standard red black green setup for heat map colouring.
-                            Up-regulated is green, down regulated is red and not regulated is black
-                        </p>
+                            <p>
+                                Primarily aimed at finding regulation of low abundance amino acids, the fold change is a
+                                measure of the variability between a beginning and a final element.
+                                Concrete for iceLogo this means that the changes across the sequence are emphasized and
+                                not
+                                the values of each element. The values used are these fold changes that are observed.
+                                fold change in the down regulated sense are translated to their negative component (for
+                                example a fold change of 0.5 indicates it is twice as down regulated, which translates
+                                to
+                                -2). This helps to remove systematic errors that might be present. Please keep in mind
+                                that
+                                having large differences but small ratios between the elements leads to a high miss rate
 
-                        <h4 class="lead">examples</h4>
-                        <a href="logo.html?example=2">example of a standard heat map generated with iceLogo</a>
-                    </div>
+                            </p>
 
-                    <div id="sequencelogo-visualisation-textblock" class="textblock">
-                        <h3 id="sequencelogo-visualisation">sequence logos</h3>
+                            <h4 class="lead">Additional colouring rules</h4>
 
-                        <p>The classical way of representing consensus sequences. Sequence logos are based on the
-                            information theory. This theory states that a bit is the amount of information necessary to
-                            choose between two equally probable
-                            choices. In a sequence logo the height of a stack of amino acids is thus calculated and
-                            presented in bits. The height of one amino acid in such a stack reflects its frequency.</p>
+                            <p>
 
-                        <h4 class="lead">added features</h4>
+                                When using the SOAP server to create iceLogos, there are some specific rules when using
+                                the
+                                fold change.
+                                Because a fold change can become infinite, we default back to a certain height.
+                            <ul>
+                                <li>
+                                    When only one amino acid is regulated, the height will the maximum height possible
+                                    in
+                                    the
+                                    iceLogo.
+                                </li>
+                                <li>
+                                    When multiple amino acids are regulated, and every amino acid sizes are infinite,
+                                    the
+                                    height
+                                    of the amino acids will be the maximul height divided by the number of regulated
+                                    amino
+                                    acids
+                                    on the position.
+                                </li>
+                                <li>
+                                    When multiple amino acids are regulated, and some amino acid sizes are infinite, the
+                                    height
+                                    of the infinite amino acids will be 10% larger than the largest non infinite amino
+                                    acid
+                                </li>
+                            </ul>
+                            </p>
 
-                        <p>
-                            IceLogo, next to the standard implementation of a sequence logo, also allows for a
-                            correction by using <a href="#referenceset">a reference set</a>.
-                            This corrects for standard abundance of amino acids on a given position.
-                        </p>
+                            <h4>examples</h4>
 
-                        <h4 class="lead">SOAP implementation</h4>
+                            <a href="logo.html?example=1">example set with percentage difference</a>
+                            <br>
+                            <a href="logo.html?example7">example set with fold change</a>
 
-                        <p>
-                            When using the SOAP server to generate a sequence logo, a negative set correction is always
-                            performed.
-                        </p>
-                        <h4 class="lead">examples</h4>
-                        <a href=logo.html?example=3>example of a sequence logo corrected for background</a>
-                    </div>
+                        </div>
 
-                    <div id="filledlogo-visualisation-textblock" class="textblock">
-                        <h3 id="filledlogo-visualisation">Filled logos</h3>
+                        <div class="textblock" id="heatmap-visualisation-textblock">
+                            <h3 id="heatmap-visualisation">heat maps</h3>
 
-                        <p>
-                            Filled logos are sequence logos that have the height set to a standard value, and have the
-                            amino acids at each position take up the percentage of abundance for a position.
-                            This reduces the impact of a heavily up or down-regulated amino acid on a certain position
-                            in favour of the relative impact of each amino acid on each location.
-                        </p>
+                            <p>
+                                A heat map is commonly used to create an overview of all possibilities in a 2D space
+                                compared to a central point.
+                                The implementation of heat maps in iceLogo puts the amino acids on the rows and the
+                                positions on the columns.
+                            </p>
 
-                        <a href="logo.html?example=4">Example of a filled logo</a>
-                    </div>
+                            <p>
+                                for more information on how the scoring works for determining the heat of each data
+                                point,
+                                please refer to the <a href="manual.pdf">manual pdf section on heat maps</a>
+                            </p>
 
-                    <div id="aa-param-graph-visualisation-textblock" class="textblock">
-                        <h3 id="aa-param-graph-visualisation">Amino acid parameter graphs</h3>
+                            <h4 class="lead">colouring rules</h4>
 
-                        <h4 class="lead">General information</h4>
+                            <p>
+                                Heat maps in iceLogo use the standard red black green setup for heat map colouring.
+                                Up-regulated is green, down regulated is red and not regulated is black
+                            </p>
 
-                        <p>
+                            <h4 class="lead">examples</h4>
+                            <a href="logo.html?example=2">example of a standard heat map generated with iceLogo</a>
+                        </div>
 
-                            This visualisation method allows the creation of graphs that display a certain parameter
-                            across
-                            the consensus sequence.
-                            A classical example is the hydrophobicity to see if certain locations in the consensus
-                            sequence
-                            are up-regulated because of the necessity of having a hydrophobic or hydrofilic amino acid.
+                        <div id="sequencelogo-visualisation-textblock" class="textblock">
+                            <h3 id="sequencelogo-visualisation">sequence logos</h3>
 
-                        </p>
+                            <p>The classical way of representing consensus sequences. Sequence logos are based on the
+                                information theory. This theory states that a bit is the amount of information necessary
+                                to
+                                choose between two equally probable
+                                choices. In a sequence logo the height of a stack of amino acids is thus calculated and
+                                presented in bits. The height of one amino acid in such a stack reflects its
+                                frequency.</p>
 
-                        <a href="logo.html?example=5">example of a amino acid parameter graph using the net charge of
-                            the amino acids</a>
-                    </div>
+                            <h4 class="lead">added features</h4>
 
-                    <div id="correlation-line-visualisation-textblock" class="textblock">
-                        <h3 id="correlation-line-visualisation">Correlation line graphs</h3>
+                            <p>
+                                IceLogo, next to the standard implementation of a sequence logo, also allows for a
+                                correction by using <a href="#referenceset">a reference set</a>.
+                                This corrects for standard abundance of amino acids on a given position.
+                            </p>
 
-                        <h4 class="lead">General information</h4>
+                            <h4 class="lead">SOAP implementation</h4>
 
-                        <p>
-                            The correlation line visualisation allows for the comparison of the consensus sequence to a
-                            given matrix of occurrence or substitution matrix.
-                            This can be used to see how much a certain location in the consensus sequence deviates or
-                            follows a certain substitution matrix of amino acids.
+                            <p>
+                                When using the SOAP server to generate a sequence logo, a negative set correction is
+                                always
+                                performed.
+                            </p>
+                            <h4 class="lead">examples</h4>
+                            <a href=logo.html?example=3>example of a sequence logo corrected for background</a>
+                        </div>
 
-                        </p>
+                        <div id="filledlogo-visualisation-textblock" class="textblock">
+                            <h3 id="filledlogo-visualisation">Filled logos</h3>
 
-                        <a href="logo.html?example=6">example</a>
+                            <p>
+                                Filled logos are sequence logos that have the height set to a standard value, and have
+                                the
+                                amino acids at each position take up the percentage of abundance for a position.
+                                This reduces the impact of a heavily up or down-regulated amino acid on a certain
+                                position
+                                in favour of the relative impact of each amino acid on each location.
+                            </p>
+
+                            <a href="logo.html?example=4">Example of a filled logo</a>
+                        </div>
+
+                        <div id="aa-param-graph-visualisation-textblock" class="textblock">
+                            <h3 id="aa-param-graph-visualisation">Amino acid parameter graphs</h3>
+
+                            <h4 class="lead">General information</h4>
+
+                            <p>
+
+                                This visualisation method allows the creation of graphs that display a certain parameter
+                                across
+                                the consensus sequence.
+                                A classical example is the hydrophobicity to see if certain locations in the consensus
+                                sequence
+                                are up-regulated because of the necessity of having a hydrophobic or hydrofilic amino
+                                acid.
+
+                            </p>
+
+                            <a href="logo.html?example=5">example of a amino acid parameter graph using the net charge
+                                of
+                                the amino acids</a>
+                        </div>
+
+                        <div id="correlation-line-visualisation-textblock" class="textblock">
+                            <h3 id="correlation-line-visualisation">Correlation line graphs</h3>
+
+                            <h4 class="lead">General information</h4>
+
+                            <p>
+                                The correlation line visualisation allows for the comparison of the consensus sequence
+                                to a
+                                given matrix of occurrence or substitution matrix.
+                                This can be used to see how much a certain location in the consensus sequence deviates
+                                or
+                                follows a certain substitution matrix of amino acids.
+
+                            </p>
+
+                            <a href="logo.html?example=6">example</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div id="SOAP-container">
-                <h2 class="section-header">The SOAP service</h2>
+                <div id="SOAP-container">
+                    <h2 class="section-header">The SOAP service</h2>
 
-                <h3>What is SOAP?</h3>
+                    <h3>What is SOAP?</h3>
 
-                <p>
-                    SOAP stands for Simple Object Acces Protocol and serves to allow programatic access to the backend
-                    of a service. This allows for an automation of requests and is much faster for the generation of
-                    images in bulk in the case of iceLogo.
-                </p>
+                    <p>
+                        SOAP stands for Simple Object Acces Protocol and serves to allow programatic access to the
+                        backend
+                        of a service. This allows for an automation of requests and is much faster for the generation of
+                        images in bulk in the case of iceLogo.
+                    </p>
 
-                <h3>Description of the SOAP server functionality</h3>
+                    <h3>Description of the SOAP server functionality</h3>
 
-                <p>
-                    The full definition of all calls and their parameters can be found in <a href="IceLogo.wsdl">the
-                    wsdl file</a>.
-                    Examples of how the SOAP server works can be found on <a href="soap.html">the dedicated page</a>
-                </p>
+                    <p>
+                        The full definition of all calls and their parameters can be found in <a href="IceLogo.wsdl">the
+                        wsdl file</a>.
+                        Examples of how the SOAP server works can be found on <a href="soap.html">the dedicated page</a>
+                    </p>
 
-            </div>
+                </div>
 
 
-            <div id="elaborate-manual">
+                <div id="elaborate-manual">
 
-                <h2 class="section-header">Elaborate manual</h2>
-                For more insights on the different visualization methods and statistics, download the pdf manual
-                <a href="manual.pdf">here</a>.
+                    <h2 class="section-header">Elaborate manual</h2>
+                    For more insights on the different visualization methods and statistics, download the pdf manual
+                    <a href="manual.pdf">here</a>.
+                </div>
             </div>
         </div>
     </div>
-</div>
-{{{footer}}}
+    {{{footer}}}

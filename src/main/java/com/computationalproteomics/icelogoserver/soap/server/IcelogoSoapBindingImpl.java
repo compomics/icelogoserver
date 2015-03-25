@@ -24,6 +24,7 @@ import com.compomics.icelogo.core.interfaces.MatrixDataModel;
 import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
 import com.compomics.icelogo.core.model.TwoSampleMatrixDataModel;
 import com.compomics.icelogo.gui.graph.*;
+import com.computationalproteomics.icelogoserver.webapplication.LogoServlet;
 import org.apache.batik.transcoder.Transcoder;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
@@ -40,7 +41,7 @@ import java.util.zip.GZIPInputStream;
 
 public class IcelogoSoapBindingImpl implements com.computationalproteomics.icelogoserver.soap.server.IceLogo{
     private Vector<SwissProtComposition> iAllSpecies = null;
-    private String iLocation = null;
+    private String iLocation = new LogoServlet().getRootLocation();
     private SoapServerSingelton iSoapServerSingleton = SoapServerSingelton.getInstance();
 
 
@@ -77,11 +78,6 @@ public class IcelogoSoapBindingImpl implements com.computationalproteomics.icelo
         InputStreamReader reader = new InputStreamReader(is);
         BufferedReader in = new BufferedReader(reader);
         String strLine;
-        while ((strLine = in.readLine()) != null) {
-            if (strLine.startsWith("location")) {
-                iLocation = strLine.substring(strLine.indexOf("=") + 2);
-            }
-        }
     }
 
     public String getSamplingIceLogo(String[] lExperimentalSet, String[] lExperimentalSet2, String lSpecies, String lScoringType, int lYaxis, int lStartPosition, double lPvalue, int lHeight, int lWidth, String lSamplingType, int lSamplingPosition, int lSamplingIterations, int lAnchorPosition, String lSamplingDirection) throws Exception {
@@ -192,14 +188,6 @@ public class IcelogoSoapBindingImpl implements com.computationalproteomics.icelo
             throw new Exception( "The species \"" + lSpecies + "\" could not be recognized!");
         }
 
-        //find or create the fastafile
-        if (iLocation == null) {
-            try {
-                this.readProperties();
-            } catch (IOException e) {
-                throw new Exception( "There was a problem reading and writing the correct fasta file!");
-            }
-        }
         File fasta = new File(iLocation + lSpecies + ".fasta");
 
         if (!fasta.exists()) {
@@ -562,14 +550,6 @@ public class IcelogoSoapBindingImpl implements com.computationalproteomics.icelo
             throw new Exception( "The species \"" + lSpecies + "\" could not be recognized!");
         }
 
-        //find or create the fastafile
-        if (iLocation == null) {
-            try {
-                this.readProperties();
-            } catch (IOException e) {
-                throw new Exception( "There was a problem reading and writing the correct fasta file!");
-            }
-        }
         File fasta = new File(iLocation + lSpecies + ".fasta");
 
         if (!fasta.exists()) {
@@ -943,14 +923,7 @@ public class IcelogoSoapBindingImpl implements com.computationalproteomics.icelo
             throw new Exception( "The amino acid parameter matrix \"" + lAaMatrixTitle + "\" could not be recognized!");
         }
 
-        //find or create the fastafile
-        if (iLocation == null) {
-            try {
-                this.readProperties();
-            } catch (IOException e) {
-                throw new Exception( "There was a problem reading and writing the correct fasta file!");
-            }
-        }
+
         File fasta = new File(iLocation + lSpecies + ".fasta");
 
         if (!fasta.exists()) {
@@ -1323,14 +1296,6 @@ public class IcelogoSoapBindingImpl implements com.computationalproteomics.icelo
             throw new Exception( "The substitution matrix \"" + lSubstitutionMatrixTitle + "\" could not be recognized!");
         }
 
-        //find or create the fastafile
-        if (iLocation == null) {
-            try {
-                this.readProperties();
-            } catch (IOException e) {
-                throw new Exception( "There was a problem reading and writing the correct fasta file!");
-            }
-        }
         File fasta = new File(iLocation + lSpecies + ".fasta");
 
         if (!fasta.exists()) {
