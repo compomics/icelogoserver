@@ -274,7 +274,7 @@ $(function() {
                 url: $this.attr('action'),
                 data: $this.serialize(),
                 dataType: 'text',
-                timeout: 5000,
+                timeout: 10000,
                 method:'POST'
             }).done(function(response){
                 $('#logoImage').attr('src', '/generated_images/' + response + '.jpeg')
