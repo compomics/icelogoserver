@@ -4,20 +4,22 @@
             <div class="col-md-12" role="main">
                 <h2 class="section-header">Introduction</h2>
 
-                <p>An iceLogo SOAP (<a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol</a>)
-                Server can be accessed via http://iomics.ugent.be/icelogoserver/services/icelogo.
-                This SOAP server provides access to the different iceLogo visualization options (see
-                <a href="#methods">below</a> for the different methods).
-                These different methods all create a String with svg content as a result. The iceLogo server and
-                SOAP client examples can be found <a href="http://code.google.com/p/icelogoserver/">here</a>.</p>
+                <p>
+                    An iceLogo SOAP (<a href="http://en.wikipedia.org/wiki/SOAP">Simple Object Access Protocol</a>)
+                    server can be accessed via <samp>http://iomics.ugent.be/icelogoserver/services/icelogo</samp>.
+                    This SOAP server provides access to the different iceLogo visualization options, see
+                    <a href="#methods">below</a> for the different methods. These different methods all create a string of
+                    SVG content as a result. The iceLogo server and SOAP client examples can be found
+                    <a href="https://github.com/compomics/icelogoserver">here</a>.
+                </p>
 
                 <div id="wsdl">
                     <h2 class="section-header">WSDL</h2>
 
                     A WS-I compliant document/literal-wrapped WSDL (<a
                         href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">Web Services Description
-                    Language</a>)
-                    can be found <a href="IceLogo.wsdl">here</a>. This file defines the different services and methods.
+                    Language</a>) can be found <a href="/resources/IceLogo.wsdl">here</a>. This file defines the
+                    different services and methods.
                 </div>
 
                 <div id="code-examples">
@@ -25,17 +27,14 @@
 
                     <p>
                         Different methods exist for creating SOAP client applications in java. The wsdl2java tool is an
-                        easy and useful tool for the fast creation of a java client.
-                        However, a client call can also manually be created. Here we will give an example on how to
-                        create a client that gets a <a href="manual.html#filledlogo-visualisation">filled logo</a></i>
-                        (the code can be found <a href="clientexample.txt">here</a>). More examples can be found in the
-                        icelogo
-                        server <a href="http://code.google.com/p/icelogoserver/">source</a>.
-
+                        easy and useful tool for the fast creation of a java client. However, a client call can also
+                        manually be created. Here we will give an example on how to create a client that gets a
+                        <a href="/manual#visualisations">filled logo</a> (the code can be found
+                        <a href="/resources/clientexample.txt">here</a>). More examples can be found in the iceLogo server
+                        <a href="https://github.com/compomics/icelogoserver">source</a>.
                     </p>
 
                     <ul class="ordered code-list">
-
                         <li>First, we will create the url.</li>
 <pre><code class="language-java">// Create the url, this url point to the location of the webservice
 URL lIcelogoUrl = new URL("http://iomics.ugent.be/icelogoserver/services/icelogo");</code></pre>
@@ -44,7 +43,6 @@ URL lIcelogoUrl = new URL("http://iomics.ugent.be/icelogoserver/services/icelogo
 SOAPMappingRegistry smr = new SOAPMappingRegistry();
 Deserializer stringDser = new StringDeserializer();
 smr.mapTypes(Constants.NS_URI_SOAP_ENC,new QName("urn:IceLogoFetcher","getFilledLogoReturn"),null,null,stringDser);</code></pre>
-
                         <li>Now we will create the call.</li>
 <pre><code class="language-java">// Create and build the call.
 Call call = new Call();
@@ -79,7 +77,6 @@ e.getMessage());
 <pre><code class="language-java">//get the result
 Parameter ret = lIceLogoResponse.getReturnValue();
 String lSVGResult = (String) ret.getValue();</code></pre>
-
                         <li>This String with the svg content can be converted to images via the <a
                             href="http://xmlgraphics.apache.org/batik/">apache batik</a> library.
                             Here we will give a brief example of how the result can be converted to a jpeg image.
@@ -108,9 +105,8 @@ lOutstream.close();
                     </ul>
                 </div>
             <div>
-            <h2 class="section-header">Methods</h2>
-
-                <p>for the full list of all possible methods and their parameters, please refer to the <a href="IceLogo.wsdl">wsdl file</a> </p>
+            <h2 class="section-header" id="methods">Methods</h2>
+                <p>For the full list of all possible methods and their parameters, please refer to the <a href="/resources/IceLogo.wsdl">wsdl file</a>.</p>
             </div>
         </div>
     </div>

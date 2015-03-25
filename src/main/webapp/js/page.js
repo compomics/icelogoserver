@@ -200,12 +200,22 @@ $(function() {
     $('input[name="visualisationType"]').change(function() {
         var $this = $(this);
 
-        $this.parents('.form-group').find('.form-control').addClass('hidden').prop('disabled', true);
+        $this.parents('.form-group')
+            .find('.form-control')
+            .addClass('hidden')
+            .prop('disabled', true);
+
         $this.parents('.form-group').find('.pull-right').addClass('hidden');
 
-        if ($this.val() == 'aaParameter' || $this.val() == 'correlationLine') {
+        if ($this.val() === 'aaParameter' || $this.val() === 'correlationLine') {
             $this.parents('.radio').find('.form-control').prop('disabled', false).removeClass('hidden');
             $this.parents('.radio').find('.pull-right').removeClass('hidden');
+
+            $('#scoringSystem').addClass('hidden');
+        } else if ($this.val() === 'iceLogo') {
+            $('#scoringSystem').removeClass('hidden');
+        } else {
+            $('#scoringSystem').addClass('hidden');
         }
     });
 
@@ -303,25 +313,15 @@ $(function() {
         });
     });
 
-    $('#sidebar').affix({
-        offset: {
-            bottom: function () {
-                return (this.bottom = $('body').height())
-            }
-        }
-    });
-
-
-    $('.pagination').on('click', 'li a', function () {
-
-        $('.textblock').hide();
+    $('.pagination').on('click', 'li a', function() {
+        $('.textblock').addClass('hidden');
         $('.pagination li').removeClass('active');
         $(this.parentNode).addClass('active');
-        $($(this).attr('href')).show();
+        $($(this).attr('href')).removeClass('hidden');
         return false;
     });
 
-    $('.visualisation-sublist').on('click', 'li a', function () {
+    $('.visualisation-sublist').on('click', 'li a', function() {
         $($(this).attr("href") + " a").trigger("click");
     });
 
