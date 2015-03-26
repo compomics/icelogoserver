@@ -190,7 +190,7 @@ public class LogoServlet extends HttpServlet {
             if (iNegativeSet.length == 1) {
                 iNegativeSet = neg.split("\r");
             }
-            Arrays.stream(iNegativeSet).filter(e -> e.startsWith(">") || e.isEmpty()).collect(Collectors.toList()).toArray(iNegativeSet);
+            Arrays.stream(iNegativeSet).filter(e -> !e.startsWith(">") || !e.isEmpty()).collect(Collectors.toList()).toArray(iNegativeSet);
 
             useSwissprot = false;
         }
@@ -202,7 +202,7 @@ public class LogoServlet extends HttpServlet {
         if (iPositiveSet.length == 1) {
             iPositiveSet = pos.split("\r");
         }
-        Arrays.stream(iPositiveSet).filter(e -> e.startsWith(">") || e.isEmpty()).collect(Collectors.toList()).toArray(iPositiveSet);
+        iPositiveSet = Arrays.stream(iPositiveSet).filter(e -> !e.startsWith(">") || !e.isEmpty()).collect(Collectors.toList()).toArray(new String[iPositiveSet.length]);
 
 
         //check scoring type
@@ -218,8 +218,8 @@ public class LogoServlet extends HttpServlet {
 
         //Create model and matrixes for the logo
         RawSequenceSet lRawPositiveSequenceSet = new RawSequenceSet("Positive sequences");
-        for (int i = 0; i < iPositiveSet.length; i++) {
-            lRawPositiveSequenceSet.add(iPositiveSet[i]);
+        for (String anIPositiveSet : iPositiveSet) {
+            lRawPositiveSequenceSet.add(anIPositiveSet);
         }
         AminoAcidStatistics[] lPositiveStatistics;
         // always use the smallest set to do the statistics
@@ -249,8 +249,8 @@ public class LogoServlet extends HttpServlet {
         } else {
             //Create a raw sequence set for the negative sequences.
             RawSequenceSet lRawNegativeSequenceSet = new RawSequenceSet("Negative sequences");
-            for (int i = 0; i < iNegativeSet.length; i++) {
-                lRawNegativeSequenceSet.add(iNegativeSet[i]);
+            for (String anINegativeSet : iNegativeSet) {
+                lRawNegativeSequenceSet.add(anINegativeSet);
             }
             // always use the smallest set to do the statistics
             if (iPositiveSet.length < iNegativeSet.length) {
@@ -388,11 +388,7 @@ public class LogoServlet extends HttpServlet {
                 gz.close();
 
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (TranscoderException e) {
+            } catch (TranscoderException | IOException e) {
                 e.printStackTrace();
             }
         } else {
@@ -424,14 +420,15 @@ public class LogoServlet extends HttpServlet {
         } else if (req.getParameter("visualisationType").equalsIgnoreCase("heatMap")) {
             HeatMapComponent lHeatmap = new HeatMapComponent(dataModel);
             lSVG = lHeatmap.getSVG();
-        } else if (req.getParameter("visualisationType").equalsIgnoreCase("filledLogo")) {
-            iInfoFeeder.setFillWeblogo(false);
-            if (req.getParameter("visualisationType").equalsIgnoreCase("webLogo")) {
+        } else if (req.getParameter("visualisationType").equalsIgnoreCase("filledLogo") || req.getParameter("visualisationType").equalsIgnoreCase("sequenceLogo") ) {
+            if (req.getParameter("visualisationType").equalsIgnoreCase("sequenceLogo")) {
                 iInfoFeeder.setWeblogoNegativeCorrection(true);
+                iInfoFeeder.setScoringType(ScoringTypeEnum.FREQUENCY);
+                iInfoFeeder.setFillWeblogo(false);
             } else {
                 iInfoFeeder.setWeblogoNegativeCorrection(false);
+                iInfoFeeder.setFillWeblogo(true);
             }
-            iInfoFeeder.setScoringType(ScoringTypeEnum.FREQUENCY);
             SequenceLogoComponent lSeq = new SequenceLogoComponent(dataModel);
             lSVG = lSeq.getSVG();
         } else if (req.getParameter("visualisationType").equalsIgnoreCase("aaParameter")) {
@@ -457,12 +454,7 @@ public class LogoServlet extends HttpServlet {
             }
             ConservationComponent lCorrLine = new ConservationComponent(dataModel);
             lSVG = lCorrLine.getSVG();
-        } else {
-            iInfoFeeder.setFillWeblogo(true);
-            SequenceLogoComponent lSeq = new SequenceLogoComponent(dataModel);
-            lSVG = lSeq.getSVG();
         }
-
         return lSVG;
     }
 
