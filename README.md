@@ -1,7 +1,7 @@
 # IceLogo Server
 
  * [Project Description](#project-description)
- * [Downloads](#downloads)
+ * [Download](#download)
  * [Usage](#usage)
  * [Project Support](#project-support)
 
@@ -16,7 +16,7 @@ Both the iceLogo server and installation instructions can be found in the [downl
 
 ----
 
-## Downloads
+## Download
 Download iceLogo server 0.2 [here](http://genesis.ugent.be/uvpublicdata/icelogoserver/icelogoserver.war).
 
 [Go to top of page](#icelogo-server)
