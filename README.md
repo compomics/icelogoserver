@@ -31,7 +31,7 @@ Installation instructions can be found on the [wiki](https://github.com/compomic
 
 ## Project Support
 
-The jTraML project is grateful for the support by:
+The iceLogo server project is grateful for the support by:
 
 | Compomics | VIB | Ghent University|
 |:--:|:--:|:--:|
