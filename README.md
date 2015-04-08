@@ -10,7 +10,7 @@
 ## Project Description
 
 IceLogo server is the server edition of the [iceLogo](https://github.com/compomics/icelogo) tool. This iceLogo server can be accessed via http://iomics.ugent.be/icelogoserver/. 
-Both the iceLogo server and installation instructions can be found in the [downloads](#downloads) section.
+Both the iceLogo server and installation instructions can be found in the [download](#download) section.
 
 [Go to top of page](#icelogo-server)
 
