@@ -14,7 +14,7 @@ import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
 import com.compomics.icelogo.gui.graph.*;
 import com.compomics.icelogo.core.enumeration.ColorScheme;
 
-import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
+import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
 import org.apache.batik.transcoder.Transcoder;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
@@ -24,7 +24,6 @@ import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.batik.transcoder.image.TIFFTranscoder;
 import org.apache.batik.transcoder.svg2svg.SVGTranscoder;
 import org.apache.batik.util.XMLResourceDescriptor;
-import org.apache.fop.svg.PDFTranscoder;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.svg.SVGDocument;
 
@@ -36,9 +35,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 import java.util.Vector;
 import java.util.stream.Collectors;
+import org.apache.fop.svg.PDFTranscoder;
 
 
 /**
@@ -318,7 +317,7 @@ public class LogoServlet extends HttpServlet {
                 String fileLocation = iSaveLocation;
                 //The name of the picture will be a time stamp. By this, the filename will always be unique
                 String fileName = String.valueOf(System.currentTimeMillis());
-                fileLocation = fileLocation + "\\" + fileName;
+                fileLocation = fileLocation + File.separator + fileName;
                 //Create the transcoder
                 Transcoder lJPEGTranscoder = new JPEGTranscoder();
                 // Set the transcoding hints.
